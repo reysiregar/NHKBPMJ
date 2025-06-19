@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+:root {
+    --primary: #3b82f6;
+    --secondary: #1e40af;
+    --accent: #f59e0b;
+    --dark: #1e293b;
+    --light: #f8fafc;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f1f5f9;
+    color: var(--dark);
+    scroll-behavior: smooth;
+}
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+.hero-bg {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.8) 0%, rgba(30, 64, 175, 0.9) 100%);
+}
+.nav-link {
+    position: relative;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+.active::after {
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.flip-card {
+    perspective: 1000px;
+}
+.flip-card-inner {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+    backface-visibility: hidden;
+}
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+}
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 1rem;
+    z-index: 1001;
+}
+.prev {
+    left: 1rem;
+}
+.next {
+    right: 1rem;
+}
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+.section-title {
+    position: relative;
+    display: inline-block;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 4px;
+    bottom: -8px;
+    left: 0;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 2px;
+}
+.structure-item {
+    transition: all 0.3s ease;
+}
+.structure-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.event-card {
+    transition: all 0.3s ease;
+}
+.event-card:hover {
+    transform: scale(1.03);
+}
+.event-card-fixed {
+    height: 420px;
+    max-height: 420px;
+    min-height: 420px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.event-card-fixed .flip-card-inner,
+.event-card-fixed .flip-card-front,
+.event-card-fixed .flip-card-back {
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+}
+.event-card-fixed .flip-card-back {
+    overflow-y: auto;
+}
+.fade-in-initial {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+#back-to-top {
+    transition: opacity 0.4s, visibility 0.4s;
+}
+#back-to-top.visible {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+#back-to-top:not(.visible) {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+#mobile-menu {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+}
+#mobile-menu.menu-open {
+    max-height: 500px; /* enough for all menu items */
+    opacity: 1;
+}
+#preloader {
+    transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), visibility 0.8s;
+}
+#preloader.hide {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+@keyframes preloader-fadein {
+    0% { opacity: 0; transform: scale(0.95) translateY(30px); }
+    60% { opacity: 1; transform: scale(1.05) translateY(-10px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.animate-preloader-fadein {
+    animation: preloader-fadein 1.2s cubic-bezier(0.4,0,0.2,1) both;
+} 

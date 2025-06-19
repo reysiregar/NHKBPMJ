@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naposobulung HKBP Mustikajaya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-blue-600 to-amber-400">
+        <h1 class="text-3xl md:text-5xl font-bold text-white drop-shadow-lg animate-preloader-fadein">
+            Welcome to <span class="text-amber-300">NHKBP Mustikajaya</span>
+        </h1>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <img src="../public/img/nhkbpmj_logo.png" alt="NHKBP Mustikajaya Logo" class="h-8 w-8 mr-3">
+                    <span class="text-xl font-bold text-blue-600">NHKBP</span>
+                    <span class="ml-1 text-xl font-bold text-amber-500">Mustikajaya</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium active">Home</a>
+                        <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">About</a>
+                        <a href="#structure" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Structure</a>
+                        <a href="#events" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Events</a>
+                        <a href="#gallery" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Gallery</a>
+                        <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">About</a>
+                <a href="#structure" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Structure</a>
+                <a href="#events" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Events</a>
+                <a href="#gallery" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Gallery</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg text-white pt-24 pb-20 md:pt-32 md:pb-28 relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-blue-900/80"></div>
+            <div class="absolute inset-0 opacity-20" style="background-image: url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'); background-size: cover; background-position: center;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="md:w-2/3 lg:w-1/2">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold fade-in-initial leading-tight">
+                    <span class="block mb-3">Naposobulung</span>
+                    <span><span class="text-amber-400">HKBP</span> Mustikajaya</span>
+                </h1>
+                <p class="text-lg md:text-xl mt-6 mb-8 fade-in" style="animation-delay: 0.2s;">Komunitas pemuda yang berdedikasi untuk pertumbuhan rohani, kerjasama, dan melakukan pelayanan kepada Tuhan dan orang lain.</p>
+                <div class="flex space-x-4 fade-in" style="animation-delay: 0.4s;">
+                    <a href="#about" class="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition duration-300">Tentang Kami</a>
+                    <a href="#contact" class="px-6 py-3 border-2 border-white hover:bg-white/20 text-white font-medium rounded-lg transition duration-300">Hubungi Kami</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl font-bold text-gray-800 mb-4">Tentang Kami</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Mari kita kenal lebih dekat tentang Naposobulung HKBP Mustikajaya</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Komunitas Kami</h3>
+                    <p class="text-gray-600 mb-6">Naposobulung HKBP Mustikajaya adalah komunitas pemuda HKBP Mustikajaya, berdedikasi untuk mendukung pertumbuhan rohani, membangun hubungan yang berarti, dan melayani dengan cinta dan kasih sayang.</p>
+                    <p class="text-gray-600 mb-6">Kami percaya bahwa menciptakan ruang yang menyenangkan bagi pemuda untuk menjelajahi iman mereka, mengembangkan bakat mereka, dan membuat dampak positif di dunia di sekitarnya.</p>
+                    <div class="flex space-x-4">
+                        <div class="bg-blue-100 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-600 mb-2">Visi</h4>
+                            <p class="text-sm text-gray-700">Menjadi komunitas pemuda yang memancarkan terang Kristus dan menjadi agen perubahan yang penuh kasih.</p>
+                        </div>
+                        <div class="bg-amber-100 p-4 rounded-lg">
+                            <h4 class="font-bold text-amber-600 mb-2">Misi</h4>
+                            <p class="text-sm text-gray-700">Mendorong pertumbuhan iman dan karakter pemuda melalui kebersamaan, pelayanan tulus, dan hidup yang mencerminkan kasih Kristus.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in" style="animation-delay: 0.2s;">
+                    <div class="glass-card p-4 rounded-2xl shadow-lg">
+                        <img src="../public/img/naposo.png" alt="Youth Fellowship" class="w-full h-auto rounded-lg shadow-md">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Structure Section -->
+    <section id="structure" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl font-bold text-gray-800 mb-4">Struktur Kami</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Yuk kenalan dengan para pengurus Naposobulung HKBP Mustikajaya</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- BPH (Core Committee) -->
+                <div class="structure-item bg-white rounded-xl shadow-md overflow-hidden fade-in">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-users text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">BPH</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Komite inti yang mengawasi semua kegiatan dan operasional naposobulung.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-crown text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Ketua</h4>
+                                    <p class="text-sm text-gray-600">Kelvin Manurung</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user-tie text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Wakil Ketua</h4>
+                                    <p class="text-sm text-gray-600">Annes Marbun</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-pen-fancy text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Sekretaris</h4>
+                                    <p class="text-sm text-gray-600">Liana Manullang</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-calculator text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Bendahara</h4>
+                                    <p class="text-sm text-gray-600">Shereen Sinaga</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Seksi Rohani (Spiritual Division) -->
+                <div class="structure-item bg-white rounded-xl shadow-md overflow-hidden fade-in" style="animation-delay: 0.1s;">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-pray text-green-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Seksi Rohani</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Memimpin kegiatan rohani, studi Alkitab, dan sesi ibadah untuk komunitas.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-crown text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Koordinator</h4>
+                                    <p class="text-sm text-gray-600">Callysthene Tobing</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Anggota</h4>
+                                    <p class="text-sm text-gray-600">Hosana Manurung</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Anggota</h4>
+                                    <p class="text-sm text-gray-600">Delon Sidabutar</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Anggota</h4>
+                                    <p class="text-sm text-gray-600">Aureka Simarmata</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Anggota</h4>
+                                    <p class="text-sm text-gray-600">Fhasya Siagian</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Anggota</h4>
+                                    <p class="text-sm text-gray-600">Awany Manalu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Humdok (Documentation & Publication) -->
+                <div class="structure-item bg-white rounded-xl shadow-md overflow-hidden fade-in" style="animation-delay: 0.2s;">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-camera text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Humdok</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Divisi yang bertugas untuk dokumentasi kegiatan dan manajemen media sosial.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-crown text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Koordinator</h4>
+                                    <p class="text-sm text-gray-600">Bulan Hutasoit</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Anggota</h4>
+                                    <p class="text-sm text-gray-600">Thania Siagian</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Anggota</h4>
+                                    <p class="text-sm text-gray-600">Destri Sinaga</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Anggota</h4>
+                                    <p class="text-sm text-gray-600">Roy Rajagukguk</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Anggota</h4>
+                                    <p class="text-sm text-gray-600">Bryan Nababan</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Anggota</h4>
+                                    <p class="text-sm text-gray-600">Bryan Samosir</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Seksi Olahraga (Sports Division) -->
+                <div class="structure-item bg-white rounded-xl shadow-md overflow-hidden fade-in" style="animation-delay: 0.3s;">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-running text-red-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Seksi Olahraga</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Memimpin kegiatan olahraga dan meningkatkan kesehatan fisik di antara anggota.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-red-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-crown text-red-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Koordinator</h4>
+                                    <p class="text-sm text-gray-600">Patar Sinambela</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-red-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-red-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Anggota</h4>
+                                    <p class="text-sm text-gray-600">Christo Siagian</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-red-200 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user text-red-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Anggota</h4>
+                                    <p class="text-sm text-gray-600">Jose Siagian</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl font-bold text-gray-800 mb-4">Kegiatan Kami</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Yuk pantau ada kegiatan apa saja di Naposobulung HKBP Mustikajaya</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event 1 -->
+                <div class="event-card bg-white rounded-xl shadow-md p-4 fade-in">
+                    <img src="../public/img/retreat.jpeg" alt="Retreat" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Spiritual</span>
+                        <span class="text-sm text-gray-500">27-29 Juni 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Retreat NHKBP MJ 2025</h3>
+                    <p class="text-gray-600 mb-4">Kegiatan untuk memperkuat iman, membangun karakter, dan mempererat kebersamaan naposobulung.</p>
+                    <button class="open-modal-btn px-4 py-2 bg-blue-600 text-white rounded-lg w-full"
+                        data-title="Retreat NHKBP MJ 2025"
+                        data-category="Spiritual"
+                        data-date="27-29 Juni 2025"
+                        data-location="Villa Syarimel, Bogor"
+                        data-details="Retreat rohani selama tiga hari yang dirancang untuk memperdalam iman, membangun karakter, dan mempererat kebersamaan naposobulung HKBP Mustikajaya dalam suasana penuh kasih dan refleksi."
+                        data-extra='<ul class="space-y-2 text-sm"><li class="flex items-start"><i class="fas fa-clock mt-1 mr-2"></i><span>Jumat 6AM - Minggu 12PM</span></li><li class="flex items-start"><i class="fas fa-money-bill-wave mt-1 mr-2"></i><span>Rp 100.000 per orang</span></li><li class="flex items-start"><i class="fas fa-user mt-1 mr-2"></i><span>Maks 100 orang</span></li><li class="flex items-start"><i class="fas fa-clipboard-list mt-1 mr-2"></i><span>Pendaftaran ditutup</span></li></ul>'
+                        data-action="Kuota Penuh"
+                    >View Details</button>
+                </div>
+                <!-- Event 2 -->
+                <div class="event-card bg-white rounded-xl shadow-md p-4 fade-in" style="animation-delay: 0.1s;">
+                    <img src="../public/img/pendalaman.png" alt="Bible Study" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Bible Study</span>
+                        <span class="text-sm text-gray-500">Sebulan sekali</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Pendalaman Alkitab</h3>
+                    <p class="text-gray-600 mb-4">Kegiatan untuk memperdalam pemahaman Alkitab dan membangun karakter melalui studi bersama.</p>
+                    <button class="open-modal-btn px-4 py-2 bg-green-600 text-white rounded-lg w-full"
+                        data-title="Pendalaman Alkitab"
+                        data-category="Bible Study"
+                        data-date="Sebulan sekali"
+                        data-location="HKBP Mustikajaya"
+                        data-details="Pendalaman Alkitab adalah kegiatan untuk menggali firman Tuhan secara lebih mendalam dan terarah. Melalui diskusi dan studi bersama, naposo diajak memahami makna Alkitab, menerapkannya dalam kehidupan sehari-hari, serta bertumbuh dalam iman dan pengenalan akan Tuhan."
+                        data-extra='<ul class="space-y-2 text-sm"><li class="flex items-start"><i class="fas fa-clock mt-1 mr-2"></i><span>Setiap Sabtu 7-9 PM</span></li><li class="flex items-start"><i class="fas fa-book mt-1 mr-2"></i><span>Tema: none</span></li><li class="flex items-start"><i class="fas fa-user mt-1 mr-2"></i><span>Pemateri: none</span></li></ul>'
+                        data-action="Join Us"
+                    >View Details</button>
+                </div>
+                <!-- Event 3 -->
+                <div class="event-card bg-white rounded-xl shadow-md p-4 fade-in" style="animation-delay: 0.2s;">
+                    <img src="../public/img/sport.png" alt="Sports" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Sports</span>
+                        <span class="text-sm text-gray-500">Segera Hadir</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Fun Sports</h3>
+                    <p class="text-gray-600 mb-4">Kegiatan olahraga yang menyenangkan dan menarik untuk menjaga kesehatan dan membangun persahabatan.</p>
+                    <button class="open-modal-btn px-4 py-2 bg-red-600 text-white rounded-lg w-full"
+                        data-title="Fun Sport Naposobulung"
+                        data-category="Sports"
+                        data-date="Segera Hadir"
+                        data-location="Belum Ditentukan"
+                        data-details="Kegiatan olahraga yang menyenangkan dan bermanfaat untuk menjaga kesehatan tubuh serta melatih kemampuan naposo dalam bermain berbagai jenis permainan."
+                        data-extra='<ul class="space-y-2 text-sm"><li class="flex items-start"><i class="fas fa-futbol mt-1 mr-2"></i><span>Futsal: none</span></li><li class="flex items-start"><i class="fas fa-basketball-ball mt-1 mr-2"></i><span>Basketball: none</span></li><li class="flex items-start"><i class="fas fa-table-tennis mt-1 mr-2"></i><span>Badminton: none</span></li><li class="flex items-start"><i class="fas fa-users mt-1 mr-2"></i><span>Terbuka bagi semuanya yang suka olahraga</span></li></ul>'
+                        data-action="Join Us"
+                    >View Details</button>
+                </div>
+                <!-- Event 4 -->
+                <div class="event-card bg-white rounded-xl shadow-md p-4 fade-in" style="animation-delay: 0.3s;">
+                    <img src="../public/img/koor.png" alt="Worship" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Worship</span>
+                        <span class="text-sm text-gray-500">Setiap Sabtu</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Latihan Koor</h3>
+                    <p class="text-gray-600 mb-4">Kegiatan latihan koor yang bertujuan untuk meningkatkan kemampuan naposo dalam membawakan lagu pujian.</p>
+                    <button class="open-modal-btn px-4 py-2 bg-purple-600 text-white rounded-lg w-full"
+                        data-title="Latihan Koor"
+                        data-category="Worship"
+                        data-date="Setiap Sabtu 7-9PM"
+                        data-location="HKBP Mustikajaya"
+                        data-details="Kegiatan latihan koor yang bertujuan untuk meningkatkan kemampuan naposo dalam bernyanyi dan mempersembahkan lagu pujian dalam ibadah."
+                        data-extra='<ul class="space-y-2 text-sm"><li class="flex items-start"><i class="fas fa-clock mt-1 mr-2"></i><span>Setiap Sabtu 7-9PM</span></li><li class="flex items-start"><i class="fas fa-music mt-1 mr-2"></i><span>Lagu Pujian</span></li><li class="flex items-start"><i class="fas fa-microphone mt-1 mr-2"></i><span>Naposo</span></li></ul>'
+                        data-action="Join Us"
+                    >View Details</button>
+                </div>
+                <!-- Event 5 -->
+                <div class="event-card bg-white rounded-xl shadow-md p-4 fade-in" style="animation-delay: 0.4s;">
+                    <img src="../public/img/ibsus.jpg" alt="Service" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="bg-pink-100 text-pink-800 text-xs font-medium px-2.5 py-0.5 rounded">Ibsus</span>
+                        <span class="text-sm text-gray-500">Sebulan sekali</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Ibadah Khusus</h3>
+                    <p class="text-gray-600 mb-4">Kegiatan ibadah khusus yang bertujuan untuk memperkuat iman dan membangun karakter naposo.</p>
+                    <button class="open-modal-btn px-4 py-2 bg-pink-600 text-white rounded-lg w-full"
+                        data-title="Ibadah Khusus"
+                        data-category="Ibsus"
+                        data-date="Sebulan sekali"
+                        data-location="HKBP Mustikajaya"
+                        data-details="Berbeda dari ibadah biasa, Ibadah Khusus menghadirkan pengalaman rohani yang lebih ekspresif dan terbuka melalui doa profetik, pujian modern, dan penyembahan penuh semangat untuk membangun keintiman dengan Tuhan dan mempererat kebersamaan jemaat."
+                        data-extra="<ul class='space-y-2 text-sm'><li class='flex items-start'><i class='fas fa-hands-helping mt-1 mr-2'></i><span>Terbuka bagi seluruh jemaat</span></li></ul>"
+                        data-action="Sign Up"
+                    >View Details</button>
+                </div>
+                <!-- Event 6 -->
+                <div class="event-card bg-white rounded-xl shadow-md p-4 fade-in" style="animation-delay: 0.5s;">
+                    <img src="../public/img/natal2025.jpg" alt="Christmas" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Celebration</span>
+                        <span class="text-sm text-gray-500">Segera Hadir</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Perayaan Natal 2025</h3>
+                    <p class="text-gray-600 mb-4">Kegiatan perayaan Natal yang menghadirkan pertunjukan drama, pertukaran hadiah, dan lainnya.</p>
+                    <button class="open-modal-btn px-4 py-2 bg-yellow-600 text-white rounded-lg w-full"
+                        data-title="Perayaan Natal"
+                        data-category="Celebration"
+                        data-date="Segera Hadir"
+                        data-location="HKBP Mustikajaya"
+                        data-details="Kegiatan perayaan Natal yang dipersembahkan oleh Remaja dan Naposo yang menghadirkan performances menarik, pertukaran hadiah, dan rangkaian acara yang menarik lainnya."
+                        data-extra='<ul class="space-y-2 text-sm"><li class="flex items-start"><i class="fas fa-clock mt-1 mr-2"></i><span>Segera Hadir</span></li><li class="flex items-start"><i class="fas fa-gifts mt-1 mr-2"></i><span>Segera Hadir</span></li><li class="flex items-start"><i class="fas fa-utensils mt-1 mr-2"></i><span>Segera Hadir</span></li><li class="flex items-start"><i class="fas fa-theater-masks mt-1 mr-2"></i><span>Segera Hadir</span></li></ul>'
+                        data-action="RSVP"
+                    >View Details</button>
+                </div>
+            </div>
+            <!-- Modal for Event Details -->
+            <div id="event-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+                <div class="bg-white rounded-lg p-8 max-w-lg w-full relative">
+                    <button id="close-modal-btn" class="absolute top-2 right-2 text-2xl text-gray-600 hover:text-gray-900">&times;</button>
+                    <div id="modal-content">
+                        <!-- Content will be injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl font-bold text-gray-800 mb-4">Galeri Kami</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Momen-momen yang telah kami abadikan dari setiap kegiatan kami</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item fade-in cursor-pointer">
+                    <img src="../public/img/agustusan.png" alt="Retreat" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <p class="mt-2 text-sm font-medium text-gray-800">Perayaan 17 Agustus 2024</p>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item fade-in cursor-pointer" style="animation-delay: 0.1s;">
+                    <img src="../public/img/galeri_1.jpg" alt="Bible Study" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <p class="mt-2 text-sm font-medium text-gray-800">Ibadah Minggu</p>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item fade-in cursor-pointer" style="animation-delay: 0.2s;">
+                    <img src="../public/img/galeri_2.jpg" alt="Sports" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <p class="mt-2 text-sm font-medium text-gray-800">Ibadah Minggu</p>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item fade-in cursor-pointer" style="animation-delay: 0.3s;">
+                    <img src="../public/img/galeri_3.jpg" alt="Worship" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <p class="mt-2 text-sm font-medium text-gray-800">Ibadah Minggu</p>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item fade-in cursor-pointer" style="animation-delay: 0.4s;">
+                    <img src="../public/img/kunjungan_gereja.png" alt="Service" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <p class="mt-2 text-sm font-medium text-gray-800">Kunjungan Gerejawi HKBP PTI</p>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item fade-in cursor-pointer" style="animation-delay: 0.5s;">
+                    <img src="../public/img/galeri_4.png" alt="Christmas" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <p class="mt-2 text-sm font-medium text-gray-800">Ibadah Minggu</p>
+                </div>
+                
+                <!-- Gallery Item 7 -->
+                <div class="gallery-item fade-in cursor-pointer" style="animation-delay: 0.6s;">
+                    <img src="../public/img/galeri_5.png" alt="Prayer" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <p class="mt-2 text-sm font-medium text-gray-800">Pesta Gotilon 2024</p>
+                </div>
+                
+                <!-- Gallery Item 8 -->
+                <div class="gallery-item fade-in cursor-pointer" style="animation-delay: 0.7s;">
+                    <img src="../public/img/galeri_6.png" alt="Fellowship" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <p class="mt-2 text-sm font-medium text-gray-800">Perayaan Natal ReNa 2024</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lightbox -->
+        <div id="lightbox" class="lightbox">
+            <span class="close">&times;</span>
+            <span class="lightbox-nav prev">&lt;</span>
+            <span class="lightbox-nav next">&gt;</span>
+            <img class="lightbox-content" id="lightbox-img">
+            <div id="lightbox-caption" class="text-white text-center mt-4"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-blue-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl font-bold mb-4">Hubungi Kami</h2>
+                <p class="max-w-2xl mx-auto">Kamu punya saran atau pertanyaan? Kamu bisa hubungi kami melalui media dibawah ini yaa ^^</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl text-center fade-in">
+                    <div class="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fab fa-instagram text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Instagram</h3>
+                    <p class="mb-4">Follow biar ga ketinggalan update</p>
+                    <a href="https://instagram.com/nhkbp.mustikajaya" target="_blank" class="inline-block px-6 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition">@nhkbp.mustikajaya</a>
+                </div>
+                
+                <div class="glass-card p-8 rounded-2xl text-center fade-in" style="animation-delay: 0.2s;">
+                    <div class="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fab fa-whatsapp text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">WhatsApp</h3>
+                    <p class="mb-4">Contact Person untuk pelayanan</p>
+                    <a href="https://wa.me/6282299421394" target="_blank" class="inline-block px-6 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition">Bulan Hutasoit</a>
+                </div>
+                
+                <div class="glass-card p-8 rounded-2xl text-center fade-in overflow-hidden" style="animation-delay: 0.4s;">
+                    <div class="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-envelope text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Email</h3>
+                    <p class="mb-4">Kirimkan email jika ada pertanyaan</p>
+                    <a href="mailto:mustikajayanhkbp@gmail.com" class="block w-full px-4 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition">mustikajayanhkbp@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Naposobulung HKBP Mustikajaya</h3>
+                    <p class="text-gray-400">Komunitas Remaja dan Naposo yang berkomitmen untuk pertumbuhan rohani, persahabatan, dan layanan kepada Tuhan dan sesama manusia.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About</a></li>
+                        <li><a href="#structure" class="text-gray-400 hover:text-white transition">Structure</a></li>
+                        <li><a href="#events" class="text-gray-400 hover:text-white transition">Events</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition">Gallery</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Hubungi Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/nhkbp.mustikajaya" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/6282299421394" class="text-gray-400 hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Lokasi</h4>
+                    <address class="text-gray-400 not-italic">
+                        HKBP Mustikajaya<br>
+                        RT.010/RW.011, Aren Jaya, Kec. Mustika Jaya<br>
+                        Kota Bekasi, Jawa Barat 17156<br>
+                        Indonesia
+                    </address>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Naposobulung HKBP Mustikajaya. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="fixed bottom-8 right-8 z-50 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-opacity opacity-0 pointer-events-none" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="./script.js"></script>
+</body>
+</html>
