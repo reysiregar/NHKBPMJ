@@ -216,5 +216,5 @@ backToTopBtn.addEventListener('click', function() {
     setTimeout(function() {
         minTimePassed = true;
         tryHidePreloader();
-    }, 3000);
+    }, 1500);
 })(); 
