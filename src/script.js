@@ -139,6 +139,7 @@ function initFadeInAnimations() {
 const modal = document.getElementById('event-modal');
 const modalContent = document.getElementById('modal-content');
 const closeModalBtn = document.getElementById('close-modal-btn');
+const modalInner = modal ? modal.querySelector('div.bg-white') : null;
 
 function openEventModal(event) {
     const btn = event.currentTarget;
@@ -161,6 +162,11 @@ function openEventModal(event) {
         ${extra}
         <button class="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-gray-100 transition w-full">${action}</button>
     `;
+    if (modalInner) {
+        modalInner.classList.remove('animate-modal-in');
+        void modalInner.offsetWidth; // force reflow
+        modalInner.classList.add('animate-modal-in');
+    }
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
 }
@@ -172,12 +178,14 @@ document.querySelectorAll('.open-modal-btn').forEach(btn => {
 closeModalBtn.addEventListener('click', function() {
     modal.classList.add('hidden');
     document.body.style.overflow = 'auto';
+    if (modalInner) modalInner.classList.remove('animate-modal-in');
 });
 
 modal.addEventListener('click', function(e) {
     if (e.target === modal) {
         modal.classList.add('hidden');
         document.body.style.overflow = 'auto';
+        if (modalInner) modalInner.classList.remove('animate-modal-in');
     }
 });
 

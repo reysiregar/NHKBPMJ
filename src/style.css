@@ -278,6 +278,13 @@ body {
         font-size: 0.95rem;
         padding: 0.75rem 0.5rem;
     }
+    .bg-white.rounded-lg.p-8 {
+        max-width: 92vw !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
 }
 
 @keyframes modalIn {
@@ -286,4 +293,9 @@ body {
 }
 .animate-modal-in {
     animation: modalIn 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+.modal-blur-bg {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 } 
