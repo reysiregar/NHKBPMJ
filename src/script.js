@@ -212,26 +212,39 @@ backToTopBtn.addEventListener('click', function() {
     const preloader = document.getElementById('preloader');
     let loaded = false;
     let minTimePassed = false;
+    let hardTimeoutPassed = false;
+    let preloaderHidden = false;
     function tryHidePreloader() {
-        if (loaded && minTimePassed && preloader) {
-            preloader.classList.add('hide');
-            // Initialize fade-in animations as soon as preloader starts fading out
-            initFadeInAnimations();
-            const homeTitle = document.getElementById('home-title');
-            if (homeTitle) {
-                homeTitle.classList.add('fade-in-initial');
+        if (preloaderHidden) return;
+        if ((loaded && minTimePassed) || hardTimeoutPassed) {
+            if (preloader) {
+                preloaderHidden = true;
+                preloader.classList.add('hide');
+                // Initialize fade-in animations as soon as preloader starts fading out
+                initFadeInAnimations();
+                const homeTitle = document.getElementById('home-title');
+                if (homeTitle) {
+                    homeTitle.classList.add('fade-in-initial');
+                }
+                setTimeout(() => {
+                    preloader.remove();
+                }, 900); // match the CSS transition duration
             }
-            setTimeout(() => {
-                preloader.remove();
-            }, 900); // match the CSS transition duration
         }
     }
-    window.addEventListener('load', function() {
+    function markLoaded() {
         loaded = true;
         tryHidePreloader();
-    });
+    }
+    window.addEventListener('load', markLoaded);
+    document.addEventListener('DOMContentLoaded', markLoaded);
     setTimeout(function() {
         minTimePassed = true;
         tryHidePreloader();
     }, 1500);
+    // Hard fallback: always hide preloader after 5 seconds
+    setTimeout(function() {
+        hardTimeoutPassed = true;
+        tryHidePreloader();
+    }, 5000);
 })(); 
