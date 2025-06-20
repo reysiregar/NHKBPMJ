@@ -87,9 +87,11 @@
                     <span><span class="text-amber-400">HKBP</span> Mustikajaya</span>
                 </h1>
                 <p class="text-lg md:text-xl mt-6 mb-8 fade-in" style="animation-delay: 0.2s;">Komunitas pemuda yang berdedikasi untuk pertumbuhan rohani, kerjasama, dan melakukan pelayanan kepada Tuhan dan orang lain.</p>
-                <div class="flex space-x-4 fade-in" style="animation-delay: 0.4s;">
-                    <a href="#about" class="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition duration-300">Tentang Kami</a>
-                    <a href="#contact" class="px-6 py-3 border-2 border-white hover:bg-white/20 text-white font-medium rounded-lg transition duration-300">Hubungi Kami</a>
+                <div class="grid grid-cols-2 gap-4 sm:flex sm:flex-row sm:space-x-4 fade-in" style="animation-delay: 0.4s;">
+                  <a href="#about" class="flex items-center justify-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition duration-300">Tentang Kami</a>
+                  <a href="#contact" class="flex items-center justify-center px-6 py-3 border-2 border-white hover:bg-white/20 text-white font-medium rounded-lg transition duration-300">Hubungi Kami</a>
+                  <button id="prayer-schedule-btn" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-300 focus:outline-none col-span-1">Jadwal Ibadah</button>
+                  <div class="hidden sm:block"></div>
                 </div>
             </div>
         </div>
@@ -669,6 +671,22 @@
     <button id="back-to-top" class="fixed bottom-8 right-8 z-50 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-opacity opacity-0 pointer-events-none" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
+
+    <!-- Prayer Schedule Modal -->
+    <div id="prayer-schedule-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden transition-opacity duration-300">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full relative animate-modal-in">
+            <button id="close-prayer-schedule-modal" class="absolute top-2 right-2 text-2xl text-gray-600 hover:text-gray-900">&times;</button>
+            <div>
+                <h3 class="text-2xl font-bold mb-4 text-center text-blue-700">Jadwal Ibadah Minggu</h3>
+                <ul class="space-y-3 text-gray-700 text-lg">
+                    <li><i class="fas fa-pray mr-2 text-amber-500"></i>Ibadah Pagi <b>06.00</b> - <b>07.30</b></li>
+                    <li><i class="fas fa-pray mr-2 text-blue-400"></i>Ibadah Siang <b>10.30</b> - <b>12.00</b></li>
+                    <li><i class="fas fa-pray mr-2 text-indigo-500"></i>Ibadah Sore <b>17.00</b> - <b>18.30</b></li>
+                    <li><i class="fas fa-pray mr-2 text-pink-400"></i>Sekolah Minggu <b>08.00</b> - <b>09.30</b></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <script src="./script.js"></script>
 </body>

@@ -247,4 +247,24 @@ backToTopBtn.addEventListener('click', function() {
         hardTimeoutPassed = true;
         tryHidePreloader();
     }, 5000);
-})(); 
+})();
+// Prayer Schedule Modal logic
+const prayerBtn = document.getElementById('prayer-schedule-btn');
+const prayerModal = document.getElementById('prayer-schedule-modal');
+const closePrayerModal = document.getElementById('close-prayer-schedule-modal');
+if (prayerBtn && prayerModal && closePrayerModal) {
+    prayerBtn.addEventListener('click', function() {
+        prayerModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    });
+    closePrayerModal.addEventListener('click', function() {
+        prayerModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    });
+    prayerModal.addEventListener('click', function(e) {
+        if (e.target === prayerModal) {
+            prayerModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    });
+} 
