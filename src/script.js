@@ -57,7 +57,8 @@ const nextBtn = document.querySelector('.next');
 let currentImageIndex = 0;
 const images = Array.from(galleryItems).map(item => ({
     src: item.querySelector('img').src,
-    caption: item.querySelector('p').textContent
+    caption: item.querySelector('p').textContent,
+    description: item.getAttribute('data-description') || ''
 }));
 galleryItems.forEach((item, index) => {
     item.addEventListener('click', () => {
@@ -81,7 +82,10 @@ nextBtn.addEventListener('click', () => {
 });
 function updateLightbox() {
     lightboxImg.src = images[currentImageIndex].src;
-    lightboxCaption.textContent = images[currentImageIndex].caption;
+    lightboxCaption.innerHTML = `<div>${images[currentImageIndex].caption}</div>`;
+    if (images[currentImageIndex].description) {
+        lightboxCaption.innerHTML += `<div class='mt-2 text-sm text-gray-200'>${images[currentImageIndex].description}</div>`;
+    }
 }
 // Close lightbox when clicking outside the image
 lightbox.addEventListener('click', (e) => {
@@ -106,29 +110,31 @@ document.addEventListener('keydown', (e) => {
     }
 });
 // Intersection Observer for fade-in animations
-const fadeElements = document.querySelectorAll('.fade-in');
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target); // Unobserve after first animation
-        }
+function initFadeInAnimations() {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target); // Unobserve after first animation
+            }
+        });
+    }, {
+        threshold: 0.1
     });
-}, {
-    threshold: 0.1
-});
-fadeElements.forEach(el => {
-    el.style.opacity = 0;
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    // Apply delay based on data-delay attribute or index
-    const delay = el.getAttribute('style') && el.getAttribute('style').match(/animation-delay: (\d+\.?\d*)s/) ? 
-        parseFloat(el.getAttribute('style').match(/animation-delay: (\d+\.?\d*)s/)[1]) * 1000 : 0;
-    setTimeout(() => {
-        observer.observe(el);
-    }, delay);
-});
+    fadeElements.forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        // Apply delay based on data-delay attribute or index
+        const delay = el.getAttribute('style') && el.getAttribute('style').match(/animation-delay: (\d+\.?\d*)s/) ? 
+            parseFloat(el.getAttribute('style').match(/animation-delay: (\d+\.?\d*)s/)[1]) * 1000 : 0;
+        setTimeout(() => {
+            observer.observe(el);
+        }, delay);
+    });
+}
 // Modal for event details
 const modal = document.getElementById('event-modal');
 const modalContent = document.getElementById('modal-content');
@@ -209,6 +215,12 @@ backToTopBtn.addEventListener('click', function() {
     function tryHidePreloader() {
         if (loaded && minTimePassed && preloader) {
             preloader.classList.add('hide');
+            // Initialize fade-in animations as soon as preloader starts fading out
+            initFadeInAnimations();
+            const homeTitle = document.getElementById('home-title');
+            if (homeTitle) {
+                homeTitle.classList.add('fade-in-initial');
+            }
             setTimeout(() => {
                 preloader.remove();
             }, 900); // match the CSS transition duration
