@@ -1,0 +1,11 @@
+{
+  "analytics": {
+    "enabled": true
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/src/$1"
+    }
+  ]
+} 
