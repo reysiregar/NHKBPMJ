@@ -20,9 +20,22 @@
     <meta property="twitter:title" content="Naposobulung HKBP Mustikajaya | Komunitas Pemuda Gereja NHKBP MJ">
     <meta property="twitter:description" content="Naposobulung HKBP Mustikajaya (NHKBP MJ) adalah komunitas pemuda gereja yang aktif, inspiratif, dan berdedikasi untuk pertumbuhan iman, persahabatan, dan pelayanan di lingkungan HKBP Mustikajaya.">
     <meta property="twitter:image" content="https://nhkbpmustikajaya.com/img/nhkbpmj_logo.png">
+    
+    <!-- Preconnect to required origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="img/background.jpeg" as="image">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Non-render-blocking stylesheets -->
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <link rel="stylesheet" href="./style.css">
+
     <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -53,7 +66,7 @@
                     </div>
                 </div>
                 <div class="-mr-2 flex md:hidden">
-                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none hamburger">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
                         <span class="bar"></span>
                         <span class="bar"></span>
                         <span class="bar"></span>
@@ -90,7 +103,7 @@
                 </h1>
                 <p class="text-lg md:text-xl mt-6 mb-8 fade-in" style="animation-delay: 0.2s;">Komunitas pemuda yang berdedikasi untuk pertumbuhan rohani, kerjasama, dan melakukan pelayanan kepada Tuhan dan orang lain.</p>
                 <div class="grid grid-cols-2 gap-4 sm:flex sm:flex-row sm:space-x-4 fade-in" style="animation-delay: 0.4s;">
-                  <a href="#about" class="flex items-center justify-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition duration-300">Tentang Kami</a>
+                  <a href="#about" class="flex items-center justify-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-gray-900 font-medium rounded-lg transition duration-300">Tentang Kami</a>
                   <a href="#contact" class="flex items-center justify-center px-6 py-3 border-2 border-white hover:bg-white/20 text-white font-medium rounded-lg transition duration-300">Hubungi Kami</a>
                   <button id="prayer-schedule-btn" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-300 focus:outline-none col-span-1">Jadwal Ibadah</button>
                   <div class="hidden sm:block"></div>
@@ -112,7 +125,7 @@
                     <h3 class="text-2xl font-bold text-gray-800 mb-4">Komunitas Kami</h3>
                     <p class="text-gray-600 mb-6">Naposobulung HKBP Mustikajaya adalah komunitas pemuda gereja yang berkomitmen untuk mendukung pertumbuhan iman, mempererat hubungan yang bermakna, serta melayani sesama dengan kasih dan ketulusan.</p>
                     <p class="text-gray-600 mb-6">Kami percaya bahwa dengan menciptakan lingkungan yang positif dan penuh semangat, para pemuda dapat menjelajahi iman mereka, mengembangkan potensi dan talenta, serta memberikan dampak nyata dan positif bagi lingkungan di sekitar mereka.</p>
-                    <div class="flex space-x-4">
+                    <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
                         <div class="bg-blue-100 p-4 rounded-lg">
                             <h4 class="font-bold text-blue-600 mb-2">Visi</h4>
                             <p class="text-sm text-gray-700">Menjadi komunitas pemuda yang memancarkan terang Kristus dan menjadi agen perubahan yang penuh kasih.</p>
@@ -125,7 +138,7 @@
                 </div>
                 <div class="fade-in" style="animation-delay: 0.2s;">
                     <div class="glass-card p-4 rounded-2xl shadow-lg">
-                        <img src="img/naposo.png" alt="Youth Fellowship" class="w-full h-auto rounded-lg shadow-md">
+                        <img src="img/naposo.png" alt="Youth Fellowship" class="w-full h-auto rounded-lg shadow-md" width="4000" height="3000">
                     </div>
                 </div>
             </div>
@@ -389,7 +402,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Event 1 -->
                 <div class="event-card bg-white rounded-xl shadow-md p-4 fade-in">
-                    <img src="img/retreat.jpeg" alt="Retreat" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <img src="img/retreat.jpeg" alt="Retreat" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy">
                     <div class="flex justify-between items-center mb-2">
                         <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Spiritual</span>
                         <span class="text-sm text-gray-500">27-29 Juni 2025</span>
@@ -402,13 +415,13 @@
                         data-date="27-29 Juni 2025"
                         data-location="Villa Syarimel, Bogor"
                         data-details="Retreat rohani selama tiga hari yang dirancang untuk memperdalam iman, membangun karakter, dan mempererat kebersamaan naposobulung HKBP Mustikajaya dalam suasana penuh kasih dan refleksi."
-                        data-extra='<ul class="space-y-2 text-sm"><li class="flex items-start"><i class="fas fa-clock mt-1 mr-2"></i><span>Jumat 6AM - Minggu 12PM</span></li><li class="flex items-start"><i class="fas fa-money-bill-wave mt-1 mr-2"></i><span>Rp 100.000 per orang</span></li><li class="flex items-start"><i class="fas fa-user mt-1 mr-2"></i><span>Maks 100 orang</span></li><li class="flex items-start"><i class="fas fa-clipboard-list mt-1 mr-2"></i><span>Pendaftaran ditutup</span></li></ul>'
+                        data-extra='<ul class="space-y-2 text-sm"><li class="flex items-start"><i class="fas fa-clock mt-1 mr-2"></i><span>Jumat 06.00 - Minggu 12.00 WIB</span></li><li class="flex items-start"><i class="fas fa-money-bill-wave mt-1 mr-2"></i><span>Rp 100.000 per orang</span></li><li class="flex items-start"><i class="fas fa-user mt-1 mr-2"></i><span>Maks 100 orang</span></li><li class="flex items-start"><i class="fas fa-clipboard-list mt-1 mr-2"></i><span>Pendaftaran ditutup</span></li></ul>'
                         data-action="Kuota Penuh"
                     >View Details</button>
                 </div>
                 <!-- Event 2 -->
                 <div class="event-card bg-white rounded-xl shadow-md p-4 fade-in" style="animation-delay: 0.1s;">
-                    <img src="img/pendalaman.png" alt="Bible Study" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <img src="img/pendalaman.png" alt="Bible Study" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy">
                     <div class="flex justify-between items-center mb-2">
                         <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Bible Study</span>
                         <span class="text-sm text-gray-500">Minggu pertama</span>
@@ -427,7 +440,7 @@
                 </div>
                 <!-- Event 3 -->
                 <div class="event-card bg-white rounded-xl shadow-md p-4 fade-in" style="animation-delay: 0.2s;">
-                    <img src="img/sport.png" alt="Sports" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <img src="img/sport.png" alt="Sports" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy">
                     <div class="flex justify-between items-center mb-2">
                         <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Sports</span>
                         <span class="text-sm text-gray-500">Segera Hadir</span>
@@ -446,7 +459,7 @@
                 </div>
                 <!-- Event 4 -->
                 <div class="event-card bg-white rounded-xl shadow-md p-4 fade-in" style="animation-delay: 0.3s;">
-                    <img src="img/koor.png" alt="Worship" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <img src="img/koor.png" alt="Worship" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy">
                     <div class="flex justify-between items-center mb-2">
                         <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Worship</span>
                         <span class="text-sm text-gray-500">Minggu ke 2,3,4</span>
@@ -465,7 +478,7 @@
                 </div>
                 <!-- Event 5 -->
                 <div class="event-card bg-white rounded-xl shadow-md p-4 fade-in" style="animation-delay: 0.4s;">
-                    <img src="img/ibsus.jpg" alt="Service" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <img src="img/ibsus.jpg" alt="Ibadah Khusus" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy">
                     <div class="flex justify-between items-center mb-2">
                         <span class="bg-pink-100 text-pink-800 text-xs font-medium px-2.5 py-0.5 rounded">Ibsus</span>
                         <span class="text-sm text-gray-500">Minggu, 22 Juni 2025</span>
@@ -484,7 +497,7 @@
                 </div>
                 <!-- Event 6 -->
                 <div class="event-card bg-white rounded-xl shadow-md p-4 fade-in" style="animation-delay: 0.5s;">
-                    <img src="img/natal2025.jpg" alt="Christmas" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <img src="img/natal2025.jpg" alt="Perayaan Natal" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy">
                     <div class="flex justify-between items-center mb-2">
                         <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Celebration</span>
                         <span class="text-sm text-gray-500">Segera Hadir</span>
@@ -525,49 +538,49 @@
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <!-- Gallery Item 1 -->
                 <div class="gallery-item fade-in cursor-pointer" data-description="Momen perayaan 17 agustus 2024 dengan kegiatan lomba yang seru dan acara bakar-bakar">
-                    <img src="img/agustusan.png" alt="Retreat" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <img src="img/agustusan.png" alt="Lomba dan Bakar-bakar" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition" loading="lazy">
                     <p class="mt-2 text-sm font-medium text-gray-800">Perayaan 17 Agustus 2024</p>
                 </div>
                 
                 <!-- Gallery Item 2 -->
                 <div class="gallery-item fade-in cursor-pointer" style="animation-delay: 0.1s;" data-description="Dokumentasi Ibadah Minggu">
-                    <img src="img/galeri_1.jpg" alt="Bible Study" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <img src="img/galeri_1.jpg" alt="Happy Sunday" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition" loading="lazy">
                     <p class="mt-2 text-sm font-medium text-gray-800">Ibadah Minggu</p>
                 </div>
                 
                 <!-- Gallery Item 3 -->
                 <div class="gallery-item fade-in cursor-pointer" style="animation-delay: 0.2s;" data-description="Dokumentasi Ibadah Minggu">
-                    <img src="img/galeri_2.jpg" alt="Sports" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <img src="img/galeri_2.jpg" alt="Happy Sunday" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition" loading="lazy">
                     <p class="mt-2 text-sm font-medium text-gray-800">Ibadah Minggu</p>
                 </div>
                 
                 <!-- Gallery Item 4 -->
                 <div class="gallery-item fade-in cursor-pointer" style="animation-delay: 0.3s;" data-description="Dokumentasi Ibadah Minggu">
-                    <img src="img/galeri_3.jpg" alt="Worship" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <img src="img/galeri_3.jpg" alt="Happy Sunday" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition" loading="lazy">
                     <p class="mt-2 text-sm font-medium text-gray-800">Ibadah Minggu</p>
                 </div>
                 
                 <!-- Gallery Item 5 -->
                 <div class="gallery-item fade-in cursor-pointer" style="animation-delay: 0.4s;" data-description="Dokumentasi Kunjungan Gerejawi ke HKBP PTI bersama Naposo HKBP PTI">
-                    <img src="img/kunjungan_gereja.png" alt="Service" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <img src="img/kunjungan_gereja.png" alt="Kunjungan Gereja" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition" loading="lazy">
                     <p class="mt-2 text-sm font-medium text-gray-800">Kunjungan Gerejawi HKBP PTI</p>
                 </div>
                 
                 <!-- Gallery Item 6 -->
                 <div class="gallery-item fade-in cursor-pointer" style="animation-delay: 0.5s;" data-description="Dokumentasi Ibadah Minggu">
-                    <img src="img/galeri_4.png" alt="Christmas" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <img src="img/galeri_4.png" alt="Happy Sunday" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition" loading="lazy">
                     <p class="mt-2 text-sm font-medium text-gray-800">Ibadah Minggu</p>
                 </div>
                 
                 <!-- Gallery Item 7 -->
                 <div class="gallery-item fade-in cursor-pointer" style="animation-delay: 0.6s;" data-description="Dokumentasi perayaan Pesta Gotilon Tahun 2024">
-                    <img src="img/galeri_5.png" alt="Prayer" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <img src="img/galeri_5.png" alt="Pesta Gotilon" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition" loading="lazy">
                     <p class="mt-2 text-sm font-medium text-gray-800">Pesta Gotilon 2024</p>
                 </div>
                 
                 <!-- Gallery Item 8 -->
                 <div class="gallery-item fade-in cursor-pointer" style="animation-delay: 0.7s;" data-description="Dokumentasi Perayaan Natal Remaja dan Naposo Tahun 2024">
-                    <img src="img/galeri_6.png" alt="Fellowship" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition">
+                    <img src="img/galeri_6.png" alt="Natal ReNa" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition" loading="lazy">
                     <p class="mt-2 text-sm font-medium text-gray-800">Perayaan Natal ReNa 2024</p>
                 </div>
             </div>
@@ -600,7 +613,7 @@
                     </div>
                     <h3 class="text-xl font-bold mb-3">Instagram</h3>
                     <p class="mb-4">Follow biar ga ketinggalan update</p>
-                    <a href="https://instagram.com/nhkbp.mustikajaya" target="_blank" class="inline-block px-6 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition">@nhkbp.mustikajaya</a>
+                    <a href="https://instagram.com/nhkbp.mustikajaya" target="_blank" class="inline-block px-6 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition" aria-label="Visit our Instagram">@nhkbp.mustikajaya</a>
                 </div>
                 
                 <div class="glass-card p-8 rounded-2xl text-center fade-in" style="animation-delay: 0.2s;">
@@ -609,7 +622,7 @@
                     </div>
                     <h3 class="text-xl font-bold mb-3">WhatsApp</h3>
                     <p class="mb-4">Contact Person untuk pelayanan</p>
-                    <a href="https://wa.me/6282299421394" target="_blank" class="inline-block px-6 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition">Bulan Hutasoit</a>
+                    <a href="https://wa.me/6282299421394" target="_blank" class="inline-block px-6 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition" aria-label="Contact us on WhatsApp">Bulan Hutasoit</a>
                 </div>
                 
                 <div class="glass-card p-8 rounded-2xl text-center fade-in overflow-hidden" style="animation-delay: 0.4s;">
@@ -648,8 +661,8 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Hubungi Kami</h4>
                     <div class="flex space-x-4">
-                        <a href="https://instagram.com/nhkbp.mustikajaya" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/6282299421394" class="text-gray-400 hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://instagram.com/nhkbp.mustikajaya" class="text-gray-400 hover:text-white transition" aria-label="Visit our Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/6282299421394" class="text-gray-400 hover:text-white transition" aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 
