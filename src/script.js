@@ -275,4 +275,79 @@ if (prayerBtn && prayerModal && closePrayerModal) {
             document.body.style.overflow = 'auto';
         }
     });
-} 
+}
+// GALLERY PAGINATION LOGIC
+(function() {
+    const gallerySection = document.getElementById('gallery');
+    const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+    const loadMoreBtn = document.getElementById('load-more-gallery');
+    if (!galleryItems.length || !loadMoreBtn) return;
+
+    function isMobile() {
+        return window.innerWidth < 768;
+    }
+    function getBatchSize() {
+        return 4; // Always show 4 per batch for both mobile and desktop
+    }
+    let shownCount = 0;
+
+    function showGalleryBatch(reset = false) {
+        const batchSize = getBatchSize();
+        if (reset) {
+            shownCount = 0;
+            galleryItems.forEach(item => item.style.display = 'none');
+        }
+        // Always show up to shownCount images, then reveal next batchSize
+        let toShow = shownCount === 0 ? batchSize : shownCount + batchSize;
+        for (let i = 0; i < toShow && i < galleryItems.length; i++) {
+            galleryItems[i].style.display = '';
+        }
+        shownCount = Math.min(toShow, galleryItems.length);
+        if (shownCount >= galleryItems.length) {
+            loadMoreBtn.style.display = 'none';
+        } else {
+            loadMoreBtn.style.display = '';
+        }
+    }
+    // Initial show
+    showGalleryBatch(true);
+    // Load more click
+    loadMoreBtn.addEventListener('click', function() {
+        showGalleryBatch();
+    });
+
+    // --- Reset only if away from gallery for more than 5 seconds ---
+    let awayTimer = null;
+    let shouldReset = false;
+    function isGalleryInView() {
+        const rect = gallerySection.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+    function onSectionChange() {
+        if (isGalleryInView()) {
+            // User is in gallery section
+            if (awayTimer) {
+                clearTimeout(awayTimer);
+                awayTimer = null;
+            }
+            if (shouldReset) {
+                showGalleryBatch(true);
+                shouldReset = false;
+            }
+        } else {
+            // User left gallery section
+            if (!awayTimer) {
+                awayTimer = setTimeout(() => {
+                    shouldReset = true;
+                    awayTimer = null;
+                }, 5000);
+            }
+        }
+    }
+    window.addEventListener('scroll', onSectionChange);
+    window.addEventListener('hashchange', onSectionChange);
+    // Also reset on resize (to handle batch size change)
+    window.addEventListener('resize', function() {
+        showGalleryBatch(true);
+    });
+})(); 
