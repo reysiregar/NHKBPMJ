@@ -315,24 +315,4 @@ if (prayerBtn && prayerModal && closePrayerModal) {
     loadMoreBtn.addEventListener('click', function() {
         showGalleryBatch();
     });
-
-    // Remove timer-based reset, reset only when user returns to homepage
-    function isHomeInView() {
-        const homeSection = document.getElementById('home');
-        if (!homeSection) return false;
-        const rect = homeSection.getBoundingClientRect();
-        return rect.top < window.innerHeight && rect.bottom > 0;
-    }
-    function onSectionChange() {
-        // Reset gallery if user navigates to homepage
-        if (window.location.hash === '#home' || isHomeInView()) {
-            showGalleryBatch(true);
-        }
-    }
-    window.addEventListener('scroll', onSectionChange);
-    window.addEventListener('hashchange', onSectionChange);
-    // Also reset on resize (to handle batch size change)
-    window.addEventListener('resize', function() {
-        showGalleryBatch(true);
-    });
 })(); 

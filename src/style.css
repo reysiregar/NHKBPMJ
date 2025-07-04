@@ -202,7 +202,7 @@ body {
     transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
 }
 #mobile-menu.menu-open {
-    max-height: 500px; /* enough for all menu items */
+    max-height: 500px;
     opacity: 1;
 }
 #preloader {
@@ -212,7 +212,7 @@ body {
     justify-content: center;
     text-align: center;
     padding: 2rem;
-    background: #0a2240; /* dark blue */
+    background: #0a2240;
 }
 #preloader.hide {
     opacity: 0;
@@ -220,7 +220,7 @@ body {
     visibility: hidden;
 }
 
-/* Remove typing animation, add fade-in for preloader greeting */
+
 .preloader-fadein {
     opacity: 0;
     animation: preloader-fadein 1.2s cubic-bezier(0.4,0,0.2,1) forwards;
