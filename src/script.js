@@ -160,7 +160,6 @@ function openEventModal(event) {
         <div class="mb-2 text-gray-600"><i class="fas fa-map-marker-alt mr-2"></i>${location}</div>
         <p class="mb-4 text-gray-700">${details}</p>
         ${extra}
-        <button class="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-gray-100 transition w-full">${action}</button>
     `;
     if (modalInner) {
         modalInner.classList.remove('animate-modal-in');
@@ -199,21 +198,26 @@ window.addEventListener('scroll', function() {
     }
 });
 backToTopBtn.addEventListener('click', function() {
-    // Custom slow scroll to top (1 second duration)
-    const duration = 1000;
-    const start = window.scrollY;
-    const startTime = performance.now();
-    function scrollStep(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        // Ease in-out
-        const ease = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
-        window.scrollTo(0, start * (1 - ease));
-        if (progress < 1) {
-            requestAnimationFrame(scrollStep);
+    // Use native smooth scroll if supported
+    if ('scrollBehavior' in document.documentElement.style) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        // Fallback to custom slow scroll to top (1 second duration)
+        const duration = 1000;
+        const start = window.scrollY;
+        const startTime = performance.now();
+        function scrollStep(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease in-out
+            const ease = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
+            window.scrollTo(0, start * (1 - ease));
+            if (progress < 1) {
+                requestAnimationFrame(scrollStep);
+            }
         }
+        requestAnimationFrame(scrollStep);
     }
-    requestAnimationFrame(scrollStep);
 });
 // Preloader logic
 (function() {
