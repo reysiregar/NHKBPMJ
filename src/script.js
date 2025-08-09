@@ -87,6 +87,30 @@ function updateLightbox() {
         lightboxCaption.innerHTML += `<div class='mt-2 text-sm text-gray-200'>${images[currentImageIndex].description}</div>`;
     }
 }
+// === Skeleton Loader for Gallery & Events Images ===
+document.addEventListener('DOMContentLoaded', function() {
+    ['about', 'gallery', 'events'].forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            const images = section.querySelectorAll('img[data-skeleton]');
+            images.forEach(img => {
+                const skeleton = img.previousElementSibling;
+                function hideSkeleton() {
+                    if (skeleton) skeleton.style.display = 'none';
+                    img.classList.remove('skeleton-fade');
+                    img.classList.add('skeleton-loaded');
+                }
+                if (img.complete && img.naturalWidth !== 0) {
+                    hideSkeleton();
+                } else {
+                    img.addEventListener('load', hideSkeleton);
+                    img.addEventListener('error', hideSkeleton);
+                }
+            });
+        }
+    });
+});
+
 // Close lightbox when clicking outside the image
 lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) {
