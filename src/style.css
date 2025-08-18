@@ -6,6 +6,17 @@
     --dark: #1e293b;
     --light: #f8fafc;
 }
+.gallery-item {
+    min-height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.gallery-item[style*="display: none"] {
+    min-height: 15rem;
+    visibility: hidden;
+    pointer-events: none;
+}
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f1f5f9;
