@@ -169,16 +169,25 @@ body {
 .event-card {
     transition: all 0.3s ease;
 }
-.event-card:hover {
-    transform: scale(1.03);
-}
 .event-card-fixed {
-    height: 420px;
-    max-height: 420px;
-    min-height: 420px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+        height: 420px;
+        max-height: 420px;
+        min-height: 420px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+}
+
+@media (max-width: 600px) {
+    .event-card-fixed {
+        height: auto !important;
+        max-height: none !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+}
+.event-card-content {
+    flex-grow: 1;
 }
 .event-card-fixed .flip-card-inner,
 .event-card-fixed .flip-card-front,
