@@ -95,11 +95,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const images = section.querySelectorAll('img[data-skeleton]');
             images.forEach(img => {
                 const skeleton = img.previousElementSibling;
+
                 function hideSkeleton() {
-                    if (skeleton) skeleton.style.display = 'none';
+                    if (skeleton && skeleton.classList.contains('skeleton')) {
+                        skeleton.style.display = 'none';
+                    }
                     img.classList.remove('skeleton-fade');
                     img.classList.add('skeleton-loaded');
                 }
+
                 if (img.complete && img.naturalWidth !== 0) {
                     hideSkeleton();
                 } else {
