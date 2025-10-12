@@ -377,3 +377,130 @@ body {
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 } 
+
+/* Christmas recruitment badge and popup styles */
+.christmas-badge {
+    background: linear-gradient(90deg, #f97316 0%, #ef4444 100%);
+    color: #fff;
+    box-shadow: 0 8px 30px rgba(239,68,68,0.18);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.christmas-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(239,68,68,0.22);
+}
+.christmas-badge .christmas-emoji {
+    font-size: 1.1rem;
+}
+.christmas-popup-card {
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 12px 40px rgba(2,6,23,0.16);
+}
+@media (max-width: 640px) {
+    .christmas-popup-card { padding: 1rem; }
+    .christmas-badge { width: 100%; justify-content: center; }
+}
+
+/* Improve popup layout to avoid overlapping content */
+#christmas-popup {
+    z-index: 99999; /* ensure above other elements like nav and hero */
+}
+.christmas-popup-card {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: flex-start;
+    overflow: visible;
+    word-break: break-word;
+}
+.christmas-popup-card .content {
+    min-width: 0; /* allow flex children to shrink properly */
+    flex: 1 1 auto;
+}
+/* stacked deadline/contact */
+.christmas-popup-card .stack-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+.christmas-popup-card .actions {
+    display: flex;
+    flex-wrap: wrap;
+}
+.christmas-popup-card .christmas-emoji-wrap {
+    flex: 0 0 auto;
+}
+.christmas-popup-card button[aria-label], .christmas-popup-card #christmas-close-btn {
+    z-index: 10; /* keep close button on top */
+}
+
+@media (max-width: 720px) {
+    .christmas-popup-card {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .christmas-popup-card .christmas-emoji-wrap {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 0.5rem;
+    }
+    .christmas-popup-card .actions {
+        width: 100%;
+        gap: 0.5rem;
+    }
+    .christmas-popup-card a, .christmas-popup-card button {
+        flex: 1 1 auto;
+    }
+}
+
+/* Mobile-specific modal optimizations */
+@media (max-width: 480px) {
+    /* Center modal on very small screens instead of bottom-sheet */
+    #christmas-popup {
+        align-items: center;
+        padding: 1rem;
+    }
+    .christmas-popup-card {
+        width: 100%;
+        max-width: 420px;
+        max-height: 88vh; /* keep it within viewport */
+        overflow: hidden;
+        border-radius: 12px;
+        padding: 0.9rem 0.9rem 1rem 0.9rem;
+        margin: 0 auto;
+    }
+    .christmas-popup-card .content {
+        overflow: auto;
+        max-height: calc(88vh - 140px); /* leave space for emoji/header and actions */
+        padding-right: 0.25rem;
+    }
+    .christmas-popup-card h3 {
+        font-size: 1.05rem; /* smaller heading on tiny screens */
+        line-height: 1.1;
+    }
+    .christmas-popup-card p, .christmas-popup-card .stack-info {
+        font-size: 0.95rem;
+    }
+    .christmas-popup-card .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+    }
+    .christmas-popup-card .actions a,
+    .christmas-popup-card .actions button {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+    }
+
+    /* Ensure CTA text is centered */
+    .christmas-popup-card .actions a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .christmas-popup-card .actions a span { width: 100%; }
+}

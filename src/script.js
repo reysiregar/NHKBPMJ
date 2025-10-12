@@ -288,6 +288,46 @@ backToTopBtn.addEventListener('click', function() {
         tryHidePreloader();
     }, 5000);
 })();
+// --- Christmas recruitment popup logic ---
+(function() {
+    const popup = document.getElementById('christmas-popup');
+    const dismissBtn = document.getElementById('christmas-dismiss-btn');
+
+    if (!popup) return;
+
+    function showPopup() {
+        popup.classList.remove('hidden');
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function hidePopup() {
+        popup.classList.add('hidden');
+        popup.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // Show popup on every visit (immediate after DOMContentLoaded)
+    document.addEventListener('DOMContentLoaded', function() {
+        // Small delay so preloader has a chance to run first
+        setTimeout(showPopup, 600);
+    });
+
+    // Close handlers (only dismiss button remains)
+    if (dismissBtn) dismissBtn.addEventListener('click', hidePopup);
+
+    // Click outside to close
+    popup.addEventListener('click', function(e) {
+        if (e.target === popup) hidePopup();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popup.style.display === 'flex') {
+            hidePopup();
+        }
+    });
+})();
 // Prayer Schedule Modal logic
 const prayerBtn = document.getElementById('prayer-schedule-btn');
 const prayerModal = document.getElementById('prayer-schedule-modal');
