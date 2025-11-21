@@ -1,15 +1,12 @@
-// Mobile menu toggle
 document.getElementById('mobile-menu-button').addEventListener('click', function() {
     const menu = document.getElementById('mobile-menu');
     const btn = this;
     menu.classList.toggle('menu-open');
     btn.classList.toggle('open');
 });
-// Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        // Close mobile menu if open
         const menu = document.getElementById('mobile-menu');
         const btn = document.getElementById('mobile-menu-button');
         menu.classList.remove('menu-open');
@@ -21,7 +18,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 top: targetElement.offsetTop - 70,
                 behavior: 'smooth'
             });
-            // Update active nav link
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
             });
@@ -29,7 +25,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-// Update active nav link on scroll
 window.addEventListener('scroll', function() {
     const scrollPosition = window.scrollY;
     document.querySelectorAll('section').forEach(section => {
@@ -46,7 +41,6 @@ window.addEventListener('scroll', function() {
         }
     });
 });
-// Lightbox functionality
 const galleryItems = document.querySelectorAll('.gallery-item');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
@@ -87,7 +81,6 @@ function updateLightbox() {
         lightboxCaption.innerHTML += `<div class='mt-2 text-sm text-gray-200'>${images[currentImageIndex].description}</div>`;
     }
 }
-// === Skeleton Loader for Gallery & Events Images ===
 document.addEventListener('DOMContentLoaded', function() {
     ['about', 'gallery', 'events'].forEach(sectionId => {
         const section = document.getElementById(sectionId);
@@ -115,14 +108,30 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Close lightbox when clicking outside the image
+(function() {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('skeleton') === '1') {
+            document.body.classList.add('force-skeleton');
+            setTimeout(() => {
+                document.body.classList.remove('force-skeleton');
+            }, 5000);
+        }
+        window.__toggleSkeleton = function(state = null) {
+            if (state === null) document.body.classList.toggle('force-skeleton');
+            else if (state) document.body.classList.add('force-skeleton');
+            else document.body.classList.remove('force-skeleton');
+        };
+    } catch (e) {
+    }
+})();
+
 lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) {
         lightbox.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
 });
-// Keyboard navigation for lightbox
 document.addEventListener('keydown', (e) => {
     if (lightbox.style.display === 'flex') {
         if (e.key === 'Escape') {
@@ -137,7 +146,6 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
-// Intersection Observer for fade-in animations
 function initFadeInAnimations() {
     const fadeElements = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver((entries, observer) => {
@@ -163,7 +171,6 @@ function initFadeInAnimations() {
         }, delay);
     });
 }
-// Modal for event details
 const modal = document.getElementById('event-modal');
 const modalContent = document.getElementById('modal-content');
 const closeModalBtn = document.getElementById('close-modal-btn');
@@ -191,7 +198,7 @@ function openEventModal(event) {
     `;
     if (modalInner) {
         modalInner.classList.remove('animate-modal-in');
-        void modalInner.offsetWidth; // force reflow
+        void modalInner.offsetWidth;
         modalInner.classList.add('animate-modal-in');
     }
     modal.classList.remove('hidden');
@@ -216,7 +223,6 @@ modal.addEventListener('click', function(e) {
     }
 });
 
-// Back to top button functionality
 const backToTopBtn = document.getElementById('back-to-top');
 window.addEventListener('scroll', function() {
     if (window.scrollY > 200) {
@@ -226,18 +232,15 @@ window.addEventListener('scroll', function() {
     }
 });
 backToTopBtn.addEventListener('click', function() {
-    // Use native smooth scroll if supported
     if ('scrollBehavior' in document.documentElement.style) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-        // Fallback to custom slow scroll to top (1 second duration)
         const duration = 1000;
         const start = window.scrollY;
         const startTime = performance.now();
         function scrollStep(currentTime) {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            // Ease in-out
             const ease = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
             window.scrollTo(0, start * (1 - ease));
             if (progress < 1) {
@@ -247,7 +250,6 @@ backToTopBtn.addEventListener('click', function() {
         requestAnimationFrame(scrollStep);
     }
 });
-// Preloader logic
 (function() {
     const preloader = document.getElementById('preloader');
     let loaded = false;
@@ -282,13 +284,61 @@ backToTopBtn.addEventListener('click', function() {
         minTimePassed = true;
         tryHidePreloader();
     }, 1500);
-    // Hard fallback: always hide preloader after 5 seconds
     setTimeout(function() {
         hardTimeoutPassed = true;
         tryHidePreloader();
     }, 5000);
 })();
-// Prayer Schedule Modal logic
+(function() {
+    const root = document.documentElement;
+    const toggleDesktop = document.getElementById('theme-toggle');
+    const toggleMobile = document.getElementById('theme-toggle-mobile');
+    const iconDesktop = document.getElementById('theme-toggle-icon');
+    const iconMobile = document.getElementById('theme-toggle-icon-mobile');
+    const STORAGE_KEY = 'theme-preference';
+
+    function currentPreference() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) return stored;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            root.classList.add('dark');
+            updateIcons('dark');
+        } else {
+            root.classList.remove('dark');
+            updateIcons('light');
+        }
+        if (toggleDesktop) toggleDesktop.setAttribute('aria-pressed', theme === 'dark');
+        if (toggleMobile) toggleMobile.setAttribute('aria-pressed', theme === 'dark');
+    }
+
+    function updateIcons(theme) {
+        const toMoon = theme !== 'dark';
+        if (iconDesktop) iconDesktop.className = 'theme-toggle-icon fas ' + (toMoon ? 'fa-moon' : 'fa-sun');
+        if (iconMobile) iconMobile.className = 'theme-toggle-icon fas ' + (toMoon ? 'fa-moon' : 'fa-sun');
+    }
+
+    function toggleTheme() {
+        const newTheme = root.classList.contains('dark') ? 'light' : 'dark';
+        localStorage.setItem(STORAGE_KEY, newTheme);
+        applyTheme(newTheme);
+    }
+
+    // Initialize
+    applyTheme(currentPreference());
+    if (toggleDesktop) toggleDesktop.addEventListener('click', toggleTheme);
+    if (toggleMobile) toggleMobile.addEventListener('click', toggleTheme);
+
+    // Sync across tabs
+    window.addEventListener('storage', (e) => {
+        if (e.key === STORAGE_KEY && e.newValue) {
+            applyTheme(e.newValue);
+        }
+    });
+})();
 const prayerBtn = document.getElementById('prayer-schedule-btn');
 const prayerModal = document.getElementById('prayer-schedule-modal');
 const closePrayerModal = document.getElementById('close-prayer-schedule-modal');
@@ -308,7 +358,6 @@ if (prayerBtn && prayerModal && closePrayerModal) {
         }
     });
 }
-// GALLERY PAGINATION LOGIC
 (function() {
     const gallerySection = document.getElementById('gallery');
     const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
@@ -319,7 +368,7 @@ if (prayerBtn && prayerModal && closePrayerModal) {
         return window.innerWidth < 768;
     }
     function getBatchSize() {
-        return 4; // Always show 4 per batch for both mobile and desktop
+        return 4;
     }
     let shownCount = 0;
 
@@ -329,7 +378,6 @@ if (prayerBtn && prayerModal && closePrayerModal) {
             shownCount = 0;
             galleryItems.forEach(item => item.style.display = 'none');
         }
-        // Always show up to shownCount images, then reveal next batchSize
         let toShow = shownCount === 0 ? batchSize : shownCount + batchSize;
         for (let i = 0; i < toShow && i < galleryItems.length; i++) {
             galleryItems[i].style.display = '';
@@ -341,9 +389,7 @@ if (prayerBtn && prayerModal && closePrayerModal) {
             loadMoreBtn.style.display = '';
         }
     }
-    // Initial show
     showGalleryBatch(true);
-    // Load more click
     loadMoreBtn.addEventListener('click', function() {
         showGalleryBatch();
     });

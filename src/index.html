@@ -146,11 +146,11 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50" role="navigation" aria-label="Main">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <img src="img/nhkbpmj_logo.png" alt="Logo HKBP Mustikajaya" class="h-8 w-8 mr-3">
+                    <img src="img/nhkbpmj_logo.png" alt="Logo HKBP Mustikajaya" class="h-8 w-8 mr-3" width="32" height="32" loading="lazy">
                     <span class="text-xl font-bold text-blue-600">NHKBP</span>
                     <span class="ml-1 text-xl font-bold text-amber-500">Mustikajaya</span>
                 </div>
@@ -162,6 +162,10 @@
                         <a href="#events" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Events</a>
                         <a href="#gallery" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Gallery</a>
                         <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Contact</a>
+                        <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle dark mode">
+                            <span id="theme-toggle-icon" class="theme-toggle-icon fas fa-moon" aria-hidden="true"></span>
+                            <span class="hidden sm:inline">Tema</span>
+                        </button>
                     </div>
                 </div>
                 <div class="-mr-2 flex md:hidden">
@@ -175,7 +179,7 @@
         </div>
         
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="md:hidden bg-white shadow-lg">
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg" role="menu" aria-label="Mobile navigation">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Home</a>
                 <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">About</a>
@@ -183,6 +187,10 @@
                 <a href="#events" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Events</a>
                 <a href="#gallery" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Gallery</a>
                 <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Contact</a>
+                <button id="theme-toggle-mobile" class="theme-toggle-btn w-full" type="button" aria-pressed="false" aria-label="Toggle dark mode (mobile)">
+                    <span id="theme-toggle-icon-mobile" class="theme-toggle-icon fas fa-moon" aria-hidden="true"></span>
+                    <span>Toggle Tema</span>
+                </button>
             </div>
         </div>
     </nav>
@@ -602,9 +610,9 @@
                 </div>
             </div>
             <!-- Modal for Event Details -->
-            <div id="event-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden transition-opacity duration-300 modal-blur-bg">
+            <div id="event-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden transition-opacity duration-300 modal-blur-bg" role="dialog" aria-modal="true" aria-labelledby="modal-content">
                 <div class="bg-white rounded-lg p-8 max-w-lg w-full relative animate-modal-in">
-                    <button id="close-modal-btn" class="absolute top-2 right-2 text-2xl text-gray-600 hover:text-gray-900">&times;</button>
+                    <button id="close-modal-btn" class="absolute top-2 right-2 text-2xl text-gray-600 hover:text-gray-900" aria-label="Close event details dialog">&times;</button>
                     <div id="modal-content">
                         <!-- Content will be injected by JS -->
                     </div>
@@ -654,7 +662,7 @@
                 <div class="gallery-item fade-in cursor-pointer" data-index="4" style="animation-delay: 0.4s; height: 15rem;" data-description="Dokumentasi Kunjungan Gerejawi ke HKBP PTI bersama Naposo HKBP PTI">
                     <div class="skeleton"></div>
                     <img src="img/kunjungan_gereja.png" alt="Kunjungan Gerejawi HKBP PTI – Kebersamaan Naposo HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg mb-4 hover:opacity-90 transition skeleton-fade" loading="lazy" data-skeleton>
-                    <p class="mt-2 text-sm font-medium text-gray-800">Kunjungan Gerejawi HKBP PTI</p>
+                    <p class="mt-2 text-sm font-medium text-gray-800">Kunjungan Gerejawi</p>
                 </div>
                 
                 <!-- Gallery Item 6 -->
@@ -698,12 +706,12 @@
         </div>
         
         <!-- Lightbox -->
-        <div id="lightbox" class="lightbox">
+        <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Galeri gambar">
             <span class="close">&times;</span>
             <span class="lightbox-nav prev">&lt;</span>
             <span class="lightbox-nav next">&gt;</span>
             <div class="lightbox-inner">
-                <img class="lightbox-content" id="lightbox-img">
+                <img class="lightbox-content" id="lightbox-img" alt="Gambar galeri diperbesar">
                 <div id="lightbox-caption" class="lightbox-caption"></div>
             </div>
         </div>
@@ -780,10 +788,12 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Lokasi</h4>
                     <address class="text-gray-400 not-italic">
-                        HKBP Mustikajaya<br>
-                        RT.010/RW.011, Aren Jaya, Kec. Mustika Jaya<br>
-                        Kota Bekasi, Jawa Barat 17156<br>
-                        Indonesia
+                        <a href="https://maps.app.goo.gl/nNEyrYzPkCAWxsFq8" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                            HKBP Mustikajaya<br>
+                            RT.010/RW.011, Aren Jaya, Kec. Mustika Jaya<br>
+                            Kota Bekasi, Jawa Barat 17156<br>
+                            Indonesia
+                        </a>
                     </address>
                 </div>
             </div>
@@ -799,11 +809,11 @@
     </button>
 
     <!-- Prayer Schedule Modal -->
-    <div id="prayer-schedule-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden transition-opacity duration-300 modal-blur-bg">
+    <div id="prayer-schedule-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden transition-opacity duration-300 modal-blur-bg" role="dialog" aria-modal="true" aria-labelledby="prayer-schedule-title">
         <div class="bg-white rounded-lg p-8 max-w-md w-full relative animate-modal-in">
-            <button id="close-prayer-schedule-modal" class="absolute top-2 right-2 text-2xl text-gray-600 hover:text-gray-900">&times;</button>
+            <button id="close-prayer-schedule-modal" class="absolute top-2 right-2 text-2xl text-gray-600 hover:text-gray-900" aria-label="Close prayer schedule dialog">&times;</button>
             <div>
-                <h3 class="text-2xl font-bold mb-4 text-center text-blue-700">Jadwal Ibadah Minggu</h3>
+                <h3 id="prayer-schedule-title" class="text-2xl font-bold mb-4 text-center text-blue-700">Jadwal Ibadah Minggu</h3>
                 <ul class="space-y-3 text-gray-700 text-lg">
                     <li><i class="fas fa-pray mr-2 text-amber-500"></i>Ibadah Pagi <b>06.00</b> - <b>07.30</b></li>
                     <li><i class="fas fa-pray mr-2 text-blue-400"></i>Ibadah Siang <b>10.30</b> - <b>12.00</b></li>
