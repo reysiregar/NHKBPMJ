@@ -296,11 +296,16 @@ backToTopBtn.addEventListener('click', function() {
     const iconDesktop = document.getElementById('theme-toggle-icon');
     const iconMobile = document.getElementById('theme-toggle-icon-mobile');
     const STORAGE_KEY = 'theme-preference';
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function getSystemTheme() {
+        return prefersDarkScheme.matches ? 'dark' : 'light';
+    }
 
     function currentPreference() {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored) return stored;
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        return getSystemTheme();
     }
 
     function applyTheme(theme) {
@@ -331,6 +336,14 @@ backToTopBtn.addEventListener('click', function() {
     applyTheme(currentPreference());
     if (toggleDesktop) toggleDesktop.addEventListener('click', toggleTheme);
     if (toggleMobile) toggleMobile.addEventListener('click', toggleTheme);
+
+    // Listen for system theme changes
+    prefersDarkScheme.addEventListener('change', (e) => {
+        // Only apply system theme if user hasn't manually set a preference
+        if (!localStorage.getItem(STORAGE_KEY)) {
+            applyTheme(e.matches ? 'dark' : 'light');
+        }
+    });
 
     // Sync across tabs
     window.addEventListener('storage', (e) => {
@@ -393,92 +406,4 @@ if (prayerBtn && prayerModal && closePrayerModal) {
     loadMoreBtn.addEventListener('click', function() {
         showGalleryBatch();
     });
-})();
-
-// Snowfall effect - Pure JavaScript implementation
-(function() {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    
-    // Style the canvas
-    canvas.style.position = 'fixed';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
-    canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '9999';
-    
-    document.body.appendChild(canvas);
-    
-    // Set canvas size
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-    
-    // Snowflake array
-    const snowflakes = [];
-    const maxSnowflakes = 100;
-    
-    // Snowflake class
-    class Snowflake {
-        constructor() {
-            this.reset();
-            this.y = Math.random() * canvas.height;
-        }
-        
-        reset() {
-            this.x = Math.random() * canvas.width;
-            this.y = -10;
-            this.radius = Math.random() * 3 + 2;
-            this.speed = Math.random() * 1 + 0.5;
-            this.wind = Math.random() * 0.5 - 0.25;
-            this.opacity = Math.random() * 0.5 + 0.5;
-        }
-        
-        update() {
-            this.y += this.speed;
-            this.x += this.wind;
-            
-            // Reset snowflake when it goes off screen
-            if (this.y > canvas.height) {
-                this.reset();
-            }
-            if (this.x > canvas.width) {
-                this.x = 0;
-            } else if (this.x < 0) {
-                this.x = canvas.width;
-            }
-        }
-        
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-            ctx.fill();
-            ctx.closePath();
-        }
-    }
-    
-    // Create snowflakes
-    for (let i = 0; i < maxSnowflakes; i++) {
-        snowflakes.push(new Snowflake());
-    }
-    
-    // Animation loop
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        snowflakes.forEach(snowflake => {
-            snowflake.update();
-            snowflake.draw();
-        });
-        
-        requestAnimationFrame(animate);
-    }
-    
-    animate();
 })();
