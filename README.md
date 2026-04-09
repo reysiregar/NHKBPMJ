@@ -1,17 +1,17 @@
-# Naposobulung HKBP Mustikajaya Website
+# Website Naposobulung HKBP Mustikajaya
 
-This is the official website for Naposobulung HKBP Mustikajaya (NHKBP MJ), a youth community at HKBP Mustikajaya church.
+Ini adalah website resmi Naposobulung HKBP Mustikajaya (NHKBP MJ), sebuah komunitas pemuda di gereja HKBP Mustikajaya.
 
-- Built with: HTML, CSS (Tailwind), JavaScript
-- Purpose: Share information about the youth community, events, gallery, and contact details.
-- Deployed at: https://nhkbpmj.vercel.app
+- Dibangun dengan: HTML, CSS (Tailwind), JavaScript
+- Tujuan: Berbagi informasi tentang komunitas pemuda, acara, galeri, dan detail kontak.
+- Dideploy di: https://nhkbpmj.vercel.app
 
-## UI / Design System Improvements (2025-11)
+## Peningkatan UI/Desain Sistem (2025-11)
 
-Recent enhancements focused on accessibility, consistency, and theming:
+Peningkatan terbaru berfokus pada aksesibilitas, konsistensi, dan tema:
 
-### Design Tokens
-Defined in `src/style.css` under `:root` and overridden in `.dark`:
+### Token Desain
+Didefinisikan di `src/style.css` di bawah `:root` dan diganti di `.dark`:
 ```
 --primary / --primary-hover
 --secondary
@@ -22,37 +22,37 @@ Defined in `src/style.css` under `:root` and overridden in `.dark`:
 --text / --text-muted
 --focus-ring
 ```
-Use these variables for new components instead of hardcoded colors.
+Gunakan variabel ini untuk komponen baru, bukan warna hardcoded.
 
-### Dark Mode
-Toggle buttons (`#theme-toggle`, `#theme-toggle-mobile`) persist preference via `localStorage (theme-preference)`.
-Implementation adds/removes `dark` class on `<html>` (`document.documentElement`).
+### Mode Gelap
+Tombol toggle (`#theme-toggle`, `#theme-toggle-mobile`) menyimpan preferensi melalui `localStorage (theme-preference)`.
+Implementasi menambah/menghapus class `dark` pada `<html>` (`document.documentElement`).
 
-### Accessibility
-- Added `role="dialog"`, `aria-modal="true"`, and labels for modals/lightbox.
-- Added focus outline via `:focus-visible` and consistent ring styling.
-- Navigation has `role="navigation"` and proper labeling.
+### Aksesibilitas
+- Ditambahkan `role="dialog"`, `aria-modal="true"`, dan label untuk modal/lightbox.
+- Ditambahkan outline fokus melalui `:focus-visible` dan styling ring yang konsisten.
+- Navigasi memiliki `role="navigation"` dan pelabelan yang tepat.
 
-### Performance & UX
-- Logo now has explicit `width/height` to reduce layout shift.
-- Reduced motion users get minimized animations via `prefers-reduced-motion`.
+### Performa & UX
+- Logo sekarang memiliki `width/height` eksplisit untuk mengurangi pergeseran layout.
+- Pengguna yang mengurangi gerakan mendapatkan animasi yang diminimalkan melalui `prefers-reduced-motion`.
 
-### Extending
-When adding new interactive elements:
-- Prefer buttons with `aria-label` for icon-only actions.
-- Reuse `.theme-toggle-btn` pattern for compact controls.
-- Use token-based colors and transitions with `var(--transition-base)`.
+### Perluasan
+Saat menambahkan elemen interaktif baru:
+- Lebih suka tombol dengan `aria-label` untuk aksi ikon-saja.
+- Gunakan pola `.theme-toggle-btn` untuk kontrol kompak.
+- Gunakan warna berbasis token dan transisi dengan `var(--transition-base)`.
 
-## Local Development
+## Pengembangan Lokal
 
-Open `index.html` via a simple static server (optional for local testing of routing/hash behavior):
+Buka `index.html` melalui server statis sederhana (opsional untuk pengujian routing/hash secara lokal):
 ```bash
 python3 -m http.server 8080
 ```
-Visit http://localhost:8080/src/index.html
+Kunjungi http://localhost:8080/src/index.html
 
-## Future Suggestions
-- Componentize repeated card patterns.
-- Add semantic landmarks (`<main>`) wrapper.
-- Integrate service worker for asset caching if needed.
+## Saran Masa Depan
+- Komponensasi pola kartu berulang.
+- Tambahkan landmark semantik (`<main>`) pembungkus.
+- Integrasikan service worker untuk caching aset jika diperlukan.
 
