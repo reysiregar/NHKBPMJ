@@ -1,17 +1,17 @@
-# Website Naposobulung HKBP Mustikajaya
+# Naposobulung HKBP Mustikajaya Website
 
-Ini adalah website resmi Naposobulung HKBP Mustikajaya (NHKBP MJ), sebuah komunitas pemuda di gereja HKBP Mustikajaya.
+This is the official website for Naposobulung HKBP Mustikajaya (NHKBP MJ), a youth community at HKBP Mustikajaya church.
 
-- Dibangun dengan: HTML, CSS (Tailwind), JavaScript
-- Tujuan: Berbagi informasi tentang komunitas pemuda, kegiatan, galeri, dan detail kontak.
-- Dideploy di: https://nhkbpmj.vercel.app
+- Built with: HTML, CSS (Tailwind), JavaScript
+- Purpose: Share information about the youth community, events, gallery, and contact details.
+- Deployed at: https://nhkbpmj.vercel.app
 
-## Peningkatan UI / Sistem Desain (2025-11)
+## UI / Design System Improvements (2025-11)
 
-Peningkatan yang difokuskan pada aksesibilitas, konsistensi, dan tema:
+Recent enhancements focused on accessibility, consistency, and theming:
 
-### Token Desain
-Didefinisikan di `src/style.css` di bawah `:root` dan diganti di `.dark`:
+### Design Tokens
+Defined in `src/style.css` under `:root` and overridden in `.dark`:
 ```
 --primary / --primary-hover
 --secondary
@@ -22,30 +22,30 @@ Didefinisikan di `src/style.css` di bawah `:root` dan diganti di `.dark`:
 --text / --text-muted
 --focus-ring
 ```
-Gunakan variabel ini untuk komponen baru, bukan warna hardcoded.
+Use these variables for new components instead of hardcoded colors.
 
-### Mode Gelap
-Tombol toggle (`#theme-toggle`, `#theme-toggle-mobile`) menyimpan preferensi melalui `localStorage (theme-preference)`.
-Implementasi menambah/menghapus class `dark` pada `<html>` (`document.documentElement`).
+### Dark Mode
+Toggle buttons (`#theme-toggle`, `#theme-toggle-mobile`) persist preference via `localStorage (theme-preference)`.
+Implementation adds/removes `dark` class on `<html>` (`document.documentElement`).
 
-### Aksesibilitas
-- Ditambahkan `role="dialog"`, `aria-modal="true"`, dan label untuk modal/lightbox.
-- Ditambahkan outline fokus melalui `:focus-visible` dan styling ring yang konsisten.
-- Navigasi memiliki `role="navigation"` dan pelabelan yang tepat.
+### Accessibility
+- Added `role="dialog"`, `aria-modal="true"`, and labels for modals/lightbox.
+- Added focus outline via `:focus-visible` and consistent ring styling.
+- Navigation has `role="navigation"` and proper labeling.
 
-### Performa & UX
-- Logo sekarang memiliki `width/height` eksplisit untuk mengurangi pergeseran layout.
-- Pengguna yang memilih gerakan tereduksi mendapatkan animasi yang diminimalkan melalui `prefers-reduced-motion`.
+### Performance & UX
+- Logo now has explicit `width/height` to reduce layout shift.
+- Reduced motion users get minimized animations via `prefers-reduced-motion`.
 
-### Pengembangan
-Saat menambahkan elemen interaktif baru:
-- Lebih suka tombol dengan `aria-label` untuk ikon saja.
-- Gunakan pola `.theme-toggle-btn` untuk kontrol kompak.
-- Gunakan warna berbasis token dan transisi dengan `var(--transition-base)`.
+### Extending
+When adding new interactive elements:
+- Prefer buttons with `aria-label` for icon-only actions.
+- Reuse `.theme-toggle-btn` pattern for compact controls.
+- Use token-based colors and transitions with `var(--transition-base)`.
 
-## Pengembangan Lokal
+## Local Development
 
-Buka `index.html` melalui server statis sederhana (opsional untuk pengujian lokal routing/hash behavior):
+Open `index.html` via a simple static server (optional for local testing of routing/hash behavior):
 ```bash
 python3 -m http.server 8080
 ```
