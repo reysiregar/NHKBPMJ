@@ -9,32 +9,20 @@
     <link rel="canonical" href="https://nhkbpmj.vercel.app/">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nhkbpmj.vercel.app/">
     <meta property="og:title" content="HKBP Mustikajaya – Naposobulung | Pemuda Gereja Kristen">
     <meta property="og:description" content="Website resmi Naposobulung HKBP Mustikajaya (NHKBP MJ) – Komunitas pemuda gereja yang aktif dalam pelayanan, persekutuan, dan pertumbuhan iman. Lihat jadwal ibadah, kegiatan terbaru, dan galeri kami.">
     <meta property="og:image" content="https://nhkbpmj.vercel.app/img/nhkbpmj_logo.webp">
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://nhkbpmj.vercel.app/">
     <meta property="twitter:title" content="HKBP Mustikajaya – Naposobulung | Pemuda Gereja Kristen">
     <meta property="twitter:description" content="Website resmi Naposobulung HKBP Mustikajaya (NHKBP MJ) – Komunitas pemuda gereja yang aktif dalam pelayanan, persekutuan, dan pertumbuhan iman. Lihat jadwal ibadah, kegiatan terbaru, dan galeri kami.">
     <meta property="twitter:image" content="https://nhkbpmj.vercel.app/img/nhkbpmj_logo.webp">
-    
-    <!-- Preconnect to required origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-
-    <!-- Preload critical assets -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined&display=swap" rel="stylesheet">
     <link rel="preload" href="img/background.webp" as="image">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Non-render-blocking stylesheets -->
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <link rel="stylesheet" href="./style.css">
 
     <script type="application/ld+json">
@@ -137,705 +125,407 @@
     </script>
 </head>
 <body>
-    <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[9999] flex items-center justify-center">
-        <span class="preloader-fadein text-white font-bold" style="font-size:2rem;">
-            Selamat Datang di NHKBP Mustikajaya
-        </span>
+    <div id="preloader" class="preloader">
+        <p class="preloader-text">Selamat Datang di NHKBP Mustikajaya</p>
     </div>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50" role="navigation" aria-label="Main">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0 flex items-center">
-                    <img src="img/nhkbpmj_logo.webp" alt="Logo HKBP Mustikajaya" class="h-8 w-8 mr-3" width="32" height="32" loading="lazy">
-                    <span class="text-xl font-bold text-blue-600">NHKBP</span>
-                    <span class="ml-1 text-xl font-bold text-amber-500">Mustikajaya</span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-center space-x-8">
-                        <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium active">Beranda</a>
-                        <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Tentang</a>
-                        <a href="#structure" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Struktur</a>
-                        <a href="#events" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Kegiatan</a>
-                        <a href="#gallery" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Galeri</a>
-                        <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Kontak</a>
-                        <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle dark mode">
-                            <span id="theme-toggle-icon" class="theme-toggle-icon fas fa-moon" aria-hidden="true"></span>
-                            <span class="hidden sm:inline">Tema</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="md:hidden bg-white shadow-lg" role="menu" aria-label="Mobile navigation">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Beranda</a>
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Tentang</a>
-                <a href="#structure" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Struktur</a>
-                <a href="#events" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Kegiatan</a>
-                <a href="#gallery" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Galeri</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100">Kontak</a>
-                <button id="theme-toggle-mobile" class="theme-toggle-btn w-full" type="button" aria-pressed="false" aria-label="Toggle dark mode (mobile)">
-                    <span id="theme-toggle-icon-mobile" class="theme-toggle-icon fas fa-moon" aria-hidden="true"></span>
-                    <span>Ganti Tema</span>
+    <header class="top-app-bar" role="navigation" aria-label="Main">
+        <div class="app-shell app-bar-row">
+            <a class="brand" href="#home" aria-label="Naposobulung HKBP Mustikajaya">
+                <img src="img/nhkbpmj_logo.webp" alt="Logo HKBP Mustikajaya" width="40" height="40" loading="lazy">
+                <span class="brand-label">
+                    <strong>NHKBP</strong>
+                    <span>Mustikajaya</span>
+                </span>
+            </a>
+            <div class="desktop-actions">
+                <nav class="desktop-nav" aria-label="Main menu">
+                    <a href="#home" class="nav-link active">Beranda</a>
+                    <a href="#about" class="nav-link">Tentang</a>
+                    <a href="#structure" class="nav-link">Struktur</a>
+                    <a href="#events" class="nav-link">Kegiatan</a>
+                    <a href="#gallery" class="nav-link">Galeri</a>
+                    <a href="#contact" class="nav-link">Kontak</a>
+                </nav>
+                <button id="theme-toggle" class="md-button md-button-tonal icon-button" type="button" aria-pressed="false" aria-label="Toggle dark mode">
+                    <span id="theme-toggle-icon" class="material-symbols-outlined">dark_mode</span>
+                    <span>Tema</span>
                 </button>
             </div>
+            <button type="button" id="mobile-menu-button" class="icon-button mobile-menu-button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+                <span class="material-symbols-outlined menu-icon">menu</span>
+            </button>
         </div>
-    </nav>
+        <div id="mobile-menu" class="mobile-menu" role="menu" aria-label="Mobile navigation">
+            <a href="#home" class="nav-link">Beranda</a>
+            <a href="#about" class="nav-link">Tentang</a>
+            <a href="#structure" class="nav-link">Struktur</a>
+            <a href="#events" class="nav-link">Kegiatan</a>
+            <a href="#gallery" class="nav-link">Galeri</a>
+            <a href="#contact" class="nav-link">Kontak</a>
+            <button id="theme-toggle-mobile" class="md-button md-button-tonal icon-button" type="button" aria-pressed="false" aria-label="Toggle dark mode (mobile)">
+                <span id="theme-toggle-icon-mobile" class="material-symbols-outlined">dark_mode</span>
+                <span>Ganti Tema</span>
+            </button>
+        </div>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-bg text-white pt-24 pb-20 md:pt-32 md:pb-28 relative overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-blue-900/80"></div>
-            <div class="absolute inset-0 opacity-20" style="background-image: url('./img/background.webp'); background-size: cover; background-position: center;"></div>
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="md:w-2/3 lg:w-1/2">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" id="home-title">
-                    <span class="block mb-3">Naposobulung</span>
-                    <span><span class="text-amber-400">HKBP</span> Mustikajaya</span>
-                </h1>
-                <p class="text-lg md:text-xl mt-6 mb-8 fade-in" style="animation-delay: 0.2s;">Komunitas pemuda yang berdedikasi untuk pertumbuhan rohani, kerjasama, dan melakukan pelayanan kepada Tuhan dan orang lain.</p>
-                <div class="grid grid-cols-2 gap-4 sm:flex sm:flex-row sm:space-x-4 fade-in" style="animation-delay: 0.4s;">
-                  <a href="#about" class="flex items-center justify-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-gray-900 font-medium rounded-lg transition duration-300">Tentang Kami</a>
-                  <a href="#contact" class="flex items-center justify-center px-6 py-3 border-2 border-white hover:bg-white/20 text-white font-medium rounded-lg transition duration-300">Hubungi Kami</a>
-                  <button id="prayer-schedule-btn" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-300 focus:outline-none col-span-1">Jadwal Ibadah</button>
-                  <div class="hidden sm:block"></div>
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-backdrop"></div>
+            <div class="app-shell hero-content">
+                <p class="eyebrow fade-in">Komunitas Remaja & Naposo</p>
+                <h1 id="home-title">Naposobulung HKBP Mustikajaya</h1>
+                <p class="hero-lead fade-in" style="animation-delay:0.15s;">Komunitas pemuda yang berdedikasi untuk pertumbuhan rohani, kebersamaan, dan pelayanan kepada Tuhan serta sesama.</p>
+                <div class="hero-actions fade-in" style="animation-delay:0.3s;">
+                    <a href="#about" class="md-button md-button-filled">Tentang Kami</a>
+                    <a href="#contact" class="md-button md-button-outlined">Hubungi Kami</a>
+                    <button id="prayer-schedule-btn" class="md-button md-button-tonal" type="button">Jadwal Ibadah</button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="section-title text-3xl font-bold text-gray-800 mb-4">Tentang Kami</h2>
-                <p class="max-w-2xl mx-auto text-gray-600">Mari kita kenal lebih dekat tentang Naposobulung HKBP Mustikajaya</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="fade-in">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Komunitas Kami</h3>
-                    <p class="text-gray-600 mb-6">Naposobulung HKBP Mustikajaya adalah komunitas pemuda gereja yang berkomitmen untuk mendukung pertumbuhan iman, mempererat hubungan yang bermakna, serta melayani sesama dengan kasih dan ketulusan.</p>
-                    <p class="text-gray-600 mb-6">Kami percaya bahwa dengan menciptakan lingkungan yang positif dan penuh semangat, para pemuda dapat menjelajahi iman mereka, mengembangkan potensi dan talenta, serta memberikan dampak nyata dan positif bagi lingkungan di sekitar mereka.</p>
-                    <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
-                        <div class="bg-blue-100 p-4 rounded-lg">
-                            <h4 class="font-bold text-blue-600 mb-2">Visi</h4>
-                            <p class="text-sm text-gray-700">Menjadi komunitas pemuda yang memancarkan terang Kristus dan menjadi agen perubahan yang penuh kasih.</p>
+        <section id="about" class="content-section">
+            <div class="app-shell">
+                <header class="section-header">
+                    <h2>Tentang Kami</h2>
+                    <p>Mari kenal lebih dekat dengan Naposobulung HKBP Mustikajaya.</p>
+                </header>
+                <div class="about-layout">
+                    <article class="md-card fade-in">
+                        <h3>Komunitas Kami</h3>
+                        <p>Naposobulung HKBP Mustikajaya adalah komunitas pemuda gereja yang berkomitmen untuk mendukung pertumbuhan iman, mempererat hubungan yang bermakna, serta melayani sesama dengan kasih dan ketulusan.</p>
+                        <p>Kami percaya bahwa lingkungan yang positif dan penuh semangat membantu pemuda mengembangkan talenta serta memberi dampak nyata bagi sekitarnya.</p>
+                        <div class="vision-mission-grid">
+                            <div class="tonal-panel">
+                                <h4>Visi</h4>
+                                <p>Menjadi komunitas pemuda yang memancarkan terang Kristus dan menjadi agen perubahan yang penuh kasih.</p>
+                            </div>
+                            <div class="tonal-panel">
+                                <h4>Misi</h4>
+                                <p>Mendorong pertumbuhan iman dan karakter pemuda melalui kebersamaan, pelayanan tulus, dan hidup yang mencerminkan kasih Kristus.</p>
+                            </div>
                         </div>
-                        <div class="bg-amber-100 p-4 rounded-lg">
-                            <h4 class="font-bold text-amber-600 mb-2">Misi</h4>
-                            <p class="text-sm text-gray-700">Mendorong pertumbuhan iman dan karakter pemuda melalui kebersamaan, pelayanan tulus, dan hidup yang mencerminkan kasih Kristus.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="fade-in" style="animation-delay: 0.2s;">
-                    <div class="glass-card p-2 rounded-2xl shadow-lg">
+                    </article>
+                    <figure class="md-card media-card fade-in" style="animation-delay:0.2s;">
                         <div class="skeleton"></div>
-                        <img src="img/naposo.webp" alt="Pemuda Gereja – Naposobulung HKBP Mustikajaya" class="w-full h-auto object-cover rounded-lg shadow-md skeleton-fade" width="4000" height="3000" data-skeleton>
-                    </div>
+                        <img src="img/naposo.webp" alt="Pemuda Gereja – Naposobulung HKBP Mustikajaya" width="4000" height="3000" class="skeleton-fade" data-skeleton>
+                    </figure>
                 </div>
             </div>
+        </section>
+
+        <section id="structure" class="content-section surface-variant">
+            <div class="app-shell">
+                <header class="section-header">
+                    <h2>Struktur Kami</h2>
+                    <p>Kenalan dengan para pengurus Naposobulung HKBP Mustikajaya.</p>
+                </header>
+                <div class="structure-grid">
+                    <article class="md-card structure-item fade-in">
+                        <div class="card-title-row">
+                            <span class="material-symbols-outlined role-icon">groups</span>
+                            <h3>BPH</h3>
+                        </div>
+                        <p>Komite inti yang mengawasi semua kegiatan dan operasional naposobulung.</p>
+                        <ul class="role-list">
+                            <li><strong>Ketua:</strong> Fedrik Simanjuntak</li>
+                            <li><strong>Wakil Ketua:</strong> *****</li>
+                            <li><strong>Sekretaris:</strong> *****</li>
+                            <li><strong>Bendahara:</strong> *****</li>
+                        </ul>
+                    </article>
+                    <article class="md-card structure-item fade-in" style="animation-delay:0.1s;">
+                        <div class="card-title-row">
+                            <span class="material-symbols-outlined role-icon">auto_stories</span>
+                            <h3>Seksi Rohani</h3>
+                        </div>
+                        <p>Memimpin kegiatan rohani, studi Alkitab, dan sesi ibadah untuk komunitas.</p>
+                        <ul class="role-list">
+                            <li><strong>Koordinator:</strong> *****</li>
+                            <li><strong>Anggota:</strong> *****</li>
+                            <li><strong>Anggota:</strong> *****</li>
+                            <li><strong>Anggota:</strong> *****</li>
+                        </ul>
+                    </article>
+                    <article class="md-card structure-item fade-in" style="animation-delay:0.2s;">
+                        <div class="card-title-row">
+                            <span class="material-symbols-outlined role-icon">photo_camera</span>
+                            <h3>Humdok</h3>
+                        </div>
+                        <p>Divisi yang bertugas untuk dokumentasi kegiatan dan manajemen media sosial.</p>
+                        <ul class="role-list">
+                            <li><strong>Koordinator:</strong> *****</li>
+                            <li><strong>Anggota:</strong> *****</li>
+                            <li><strong>Anggota:</strong> *****</li>
+                            <li><strong>Anggota:</strong> *****</li>
+                        </ul>
+                    </article>
+                    <article class="md-card structure-item fade-in" style="animation-delay:0.3s;">
+                        <div class="card-title-row">
+                            <span class="material-symbols-outlined role-icon">sports_soccer</span>
+                            <h3>Seksi Olahraga</h3>
+                        </div>
+                        <p>Memimpin kegiatan olahraga dan meningkatkan kesehatan fisik di antara anggota.</p>
+                        <ul class="role-list">
+                            <li><strong>Koordinator:</strong> *****</li>
+                            <li><strong>Anggota:</strong> *****</li>
+                            <li><strong>Anggota:</strong> *****</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="events" class="content-section">
+            <div class="app-shell">
+                <header class="section-header">
+                    <h2>Kegiatan Kami</h2>
+                    <p>Pantau kegiatan terbaru Naposobulung HKBP Mustikajaya.</p>
+                </header>
+                <div class="events-grid">
+                    <article class="md-card event-card event-card-fixed fade-in" style="animation-delay:0.1s;">
+                        <div class="skeleton"></div>
+                        <img src="img/pendalaman.webp" alt="Pendalaman Alkitab – Naposo HKBP Mustikajaya" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <div class="chip-row">
+                            <span class="md-chip">Pendalaman Alkitab</span>
+                            <span class="event-meta">Minggu pertama</span>
+                        </div>
+                        <h3>Pendalaman Alkitab</h3>
+                        <p>Kegiatan untuk memperdalam pemahaman Alkitab dan membangun karakter melalui studi bersama.</p>
+                        <button class="open-modal-btn md-button md-button-filled" data-title="Pendalaman Alkitab" data-category="Pendalaman Alkitab" data-date="1 November 2025" data-location="HKBP Mustikajaya" data-details="Pendalaman Alkitab adalah kegiatan untuk menggali firman Tuhan secara lebih mendalam dan terarah. Melalui diskusi dan studi bersama, naposo diajak memahami makna Alkitab, menerapkannya dalam kehidupan sehari-hari, serta bertumbuh dalam iman dan pengenalan akan Tuhan." data-extra="<ul class='extra-list'><li><span class='material-symbols-outlined'>schedule</span><span>Sabtu, 19.00 - 21.00 WIB</span></li><li><span class='material-symbols-outlined'>menu_book</span><span>Tema: Tampil Beda</span></li><li><span class='material-symbols-outlined'>person</span><span>Pemateri: Pdt. Dotur Purba</span></li></ul>" data-action="Bergabung">Lihat Detail</button>
+                    </article>
+                    <article class="md-card event-card event-card-fixed fade-in" style="animation-delay:0.2s;">
+                        <div class="skeleton"></div>
+                        <img src="img/koor.webp" alt="Latihan Koor – Naposo HKBP Mustikajaya" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <div class="chip-row">
+                            <span class="md-chip">Ibadah</span>
+                            <span class="event-meta">Minggu ke 2,3,4</span>
+                        </div>
+                        <h3>Latihan Koor</h3>
+                        <p>Kegiatan latihan koor yang bertujuan untuk meningkatkan kemampuan naposo dalam membawakan lagu pujian.</p>
+                        <button class="open-modal-btn md-button md-button-filled" data-title="Latihan Koor" data-category="Ibadah" data-date="Setiap sabtu" data-location="HKBP Mustikajaya" data-details="Kegiatan latihan koor yang bertujuan untuk meningkatkan kemampuan naposo dalam bernyanyi dan mempersembahkan lagu pujian dalam ibadah." data-extra="<ul class='extra-list'><li><span class='material-symbols-outlined'>schedule</span><span>19.00 - 21.00 WIB</span></li><li><span class='material-symbols-outlined'>music_note</span><span>Lagu Pujian: belum ditentukan</span></li></ul>" data-action="Bergabung">Lihat Detail</button>
+                    </article>
+                    <article class="md-card event-card event-card-fixed fade-in" style="animation-delay:0.3s;">
+                        <div class="skeleton"></div>
+                        <img src="img/ibsus.webp" alt="Ibadah Khusus (Ibsus) – HKBP Mustikajaya" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <div class="chip-row">
+                            <span class="md-chip">Ibsus</span>
+                            <span class="event-meta">Sebulan sekali</span>
+                        </div>
+                        <h3>Ibadah Khusus</h3>
+                        <p>Kegiatan ibadah khusus yang bertujuan untuk memperkuat iman dan membangun karakter naposo.</p>
+                        <button class="open-modal-btn md-button md-button-filled" data-title="Ibadah Khusus" data-category="Ibsus" data-date="Sebulan sekali" data-location="HKBP Mustikajaya" data-details="Berbeda dari ibadah biasa, Ibadah Khusus menghadirkan pengalaman rohani yang lebih ekspresif dan terbuka melalui doa profetik, pujian modern, dan penyembahan penuh semangat." data-extra="<ul class='extra-list'><li><span class='material-symbols-outlined'>schedule</span><span>17.00 - 19.30 WIB</span></li><li><span class='material-symbols-outlined'>volunteer_activism</span><span>Terbuka bagi seluruh jemaat</span></li></ul>" data-action="Daftar">Lihat Detail</button>
+                    </article>
+                    <article class="md-card event-card event-card-fixed fade-in" style="animation-delay:0.4s;">
+                        <div class="skeleton"></div>
+                        <img src="img/sport.webp" alt="Kegiatan Olahraga – Naposo HKBP Mustikajaya" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <div class="chip-row">
+                            <span class="md-chip">Olahraga</span>
+                            <span class="event-meta">Badminton</span>
+                        </div>
+                        <h3>Fun Sports</h3>
+                        <p>Saatnya bakar kalori sambil jaga kekompakan dalam kegiatan olahraga bersama.</p>
+                        <button class="open-modal-btn md-button md-button-filled" data-title="Fun Sport Remaja Naposo" data-category="Olahraga" data-date="Jumat, 21 November 2025" data-location="Ton's Sport GOR" data-details="Yuk datang, ramein, dan nikmati keseruannya. Ajak teman-teman supaya makin seru." data-extra="<ul class='extra-list'><li><span class='material-symbols-outlined'>schedule</span><span>20.00 WIB</span></li><li><span class='material-symbols-outlined'>payments</span><span>HTM: Gratis</span></li></ul>" data-action="Bergabung">Lihat Detail</button>
+                    </article>
+                    <article class="md-card event-card event-card-fixed fade-in" style="animation-delay:0.5s;">
+                        <div class="skeleton"></div>
+                        <img src="img/natal2025.webp" alt="Perayaan Natal Remaja & Naposo 2025 – HKBP Mustikajaya" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <div class="chip-row">
+                            <span class="md-chip">Perayaan</span>
+                            <span class="event-meta">Desember 2025</span>
+                        </div>
+                        <h3>Natal ReNa 2025</h3>
+                        <p>Perayaan Natal dengan pertunjukan drama, pertukaran hadiah, dan kebersamaan seluruh anggota.</p>
+                        <button class="open-modal-btn md-button md-button-filled" data-title="Perayaan Natal" data-category="Perayaan" data-date="13 Desember 2025" data-location="Gedung Serbaguna Mustika Bersinar" data-details="Kegiatan perayaan Natal yang dipersembahkan oleh Remaja dan Naposo dengan rangkaian acara yang menarik." data-extra="<ul class='extra-list'><li><span class='material-symbols-outlined'>schedule</span><span>15.00 WIB - Selesai</span></li><li><span class='material-symbols-outlined'>redeem</span><span>Tukar Kado</span></li><li><span class='material-symbols-outlined'>restaurant</span><span>Tersedia Konsumsi</span></li></ul>" data-action="Konfirmasi Kehadiran">Lihat Detail</button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="content-section surface-variant">
+            <div class="app-shell">
+                <header class="section-header">
+                    <h2>Galeri Kami</h2>
+                    <p>Momen-momen yang telah kami abadikan dari setiap kegiatan kami.</p>
+                </header>
+                <div class="gallery-grid">
+                    <div class="gallery-item fade-in" data-index="0" data-description="Momen perayaan 17 agustus 2024 dengan kegiatan lomba yang seru dan acara bakar-bakar">
+                        <div class="skeleton"></div>
+                        <img src="img/agustusan.webp" alt="Perayaan 17 Agustus HKBP Mustikajaya – Lomba & Kebersamaan" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <p>Perayaan 17 Agustus 2024</p>
+                    </div>
+                    <div class="gallery-item fade-in" data-index="1" data-description="Dokumentasi Ibadah Minggu" style="animation-delay:0.1s;">
+                        <div class="skeleton"></div>
+                        <img src="img/galeri_1.webp" alt="Dokumentasi Ibadah Minggu – HKBP Mustikajaya" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <p>Ibadah Minggu</p>
+                    </div>
+                    <div class="gallery-item fade-in" data-index="2" data-description="Dokumentasi Ibadah Minggu" style="animation-delay:0.2s;">
+                        <div class="skeleton"></div>
+                        <img src="img/galeri_2.webp" alt="Dokumentasi Ibadah Minggu – HKBP Mustikajaya" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <p>Ibadah Minggu</p>
+                    </div>
+                    <div class="gallery-item fade-in" data-index="3" data-description="Dokumentasi Ibadah Minggu" style="animation-delay:0.3s;">
+                        <div class="skeleton"></div>
+                        <img src="img/galeri_3.webp" alt="Dokumentasi Ibadah Minggu – HKBP Mustikajaya" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <p>Ibadah Minggu</p>
+                    </div>
+                    <div class="gallery-item fade-in" data-index="4" data-description="Dokumentasi Kunjungan Gerejawi ke HKBP PTI bersama Naposo HKBP PTI" style="animation-delay:0.4s;">
+                        <div class="skeleton"></div>
+                        <img src="img/kunjungan_gereja.webp" alt="Kunjungan Gerejawi HKBP PTI – Kebersamaan Naposo HKBP Mustikajaya" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <p>Kunjungan Gerejawi</p>
+                    </div>
+                    <div class="gallery-item fade-in" data-index="5" data-description="Dokumentasi Ibadah Minggu" style="animation-delay:0.5s;">
+                        <div class="skeleton"></div>
+                        <img src="img/galeri_4.webp" alt="Dokumentasi Ibadah Minggu – HKBP Mustikajaya" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <p>Ibadah Minggu</p>
+                    </div>
+                    <div class="gallery-item fade-in" data-index="6" data-description="Dokumentasi perayaan Pesta Gotilon Tahun 2024" style="animation-delay:0.6s;">
+                        <div class="skeleton"></div>
+                        <img src="img/galeri_5.webp" alt="Pesta Gotilon 2024 – HKBP Mustikajaya" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <p>Pesta Gotilon 2024</p>
+                    </div>
+                    <div class="gallery-item fade-in" data-index="7" data-description="Dokumentasi Perayaan Natal Remaja dan Naposo Tahun 2024" style="animation-delay:0.7s;">
+                        <div class="skeleton"></div>
+                        <img src="img/galeri_6.webp" alt="Perayaan Natal ReNa 2024 – HKBP Mustikajaya" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <p>Natal ReNa 2024</p>
+                    </div>
+                    <div class="gallery-item fade-in" data-index="8" data-description="Pada tanggal 27-29 Juni 2025, telah dilaksanakan Retreat Naposobulung HKBP Mustikajaya" style="animation-delay:0.8s;">
+                        <div class="skeleton"></div>
+                        <img src="img/retreat_naposo_25_day.webp" alt="Retreat Naposo 2025 – Siang Hari – HKBP Mustikajaya" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <p>Retreat Naposo 2025</p>
+                    </div>
+                    <div class="gallery-item fade-in" data-index="9" data-description="Pada tanggal 27-29 Juni 2025, telah dilaksanakan Retreat Naposobulung HKBP Mustikajaya" style="animation-delay:0.9s;">
+                        <div class="skeleton"></div>
+                        <img src="img/retreat_naposo_25_night.webp" alt="Retreat Naposo 2025 – Malam Hari – HKBP Mustikajaya" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <p>Retreat Naposo 2025</p>
+                    </div>
+                    <div class="gallery-item fade-in" data-index="10" data-description="Dokumentasi Perayaan Natal Remaja dan Naposo Tahun 2025" style="animation-delay:1s;">
+                        <div class="skeleton"></div>
+                        <img src="img/galeri_7.webp" alt="Dokumentasi Perayaan Natal ReNa 2025 – HKBP Mustikajaya" class="skeleton-fade" loading="lazy" data-skeleton>
+                        <p>Natal ReNa 2025</p>
+                    </div>
+                </div>
+                <div class="gallery-actions">
+                    <button id="load-more-gallery" class="md-button md-button-tonal">Muat Lebih Banyak</button>
+                </div>
+            </div>
+            <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Galeri gambar">
+                <button class="icon-button close" aria-label="Close gallery image">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+                <button class="icon-button lightbox-nav prev" aria-label="Previous image">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <button class="icon-button lightbox-nav next" aria-label="Next image">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+                <div class="lightbox-inner">
+                    <img class="lightbox-content" id="lightbox-img" alt="Gambar galeri diperbesar">
+                    <div id="lightbox-caption" class="lightbox-caption"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section">
+            <div class="app-shell">
+                <header class="section-header">
+                    <h2>Hubungi Kami</h2>
+                    <p>Kalau ada saran atau pertanyaan, hubungi kami lewat media sosial berikut.</p>
+                </header>
+                <div class="contact-grid">
+                    <article class="md-card contact-card fade-in">
+                        <span class="material-symbols-outlined contact-icon">photo_camera</span>
+                        <h3>Instagram</h3>
+                        <p>Follow biar tidak ketinggalan update kegiatan.</p>
+                        <a href="https://instagram.com/nhkbp.mustikajaya" target="_blank" rel="noopener noreferrer" class="md-button md-button-outlined">@nhkbp.mustikajaya</a>
+                    </article>
+                    <article class="md-card contact-card fade-in" style="animation-delay:0.2s;">
+                        <span class="material-symbols-outlined contact-icon">chat</span>
+                        <h3>WhatsApp</h3>
+                        <p>Contact person untuk informasi pelayanan.</p>
+                        <a href="https://wa.me/6282299421394" target="_blank" rel="noopener noreferrer" class="md-button md-button-outlined">Bulan Hutasoit</a>
+                    </article>
+                    <article class="md-card contact-card fade-in" style="animation-delay:0.4s;">
+                        <span class="material-symbols-outlined contact-icon">mail</span>
+                        <h3>Email</h3>
+                        <p>Kirim email untuk pertanyaan atau kolaborasi.</p>
+                        <a href="mailto:mustikajayanhkbp@gmail.com" class="md-button md-button-outlined">mustikajayanhkbp@gmail.com</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="app-shell footer-grid">
+            <section>
+                <h3>Naposobulung HKBP Mustikajaya</h3>
+                <p>Komunitas Remaja dan Naposo yang berkomitmen untuk pertumbuhan rohani, persahabatan, dan pelayanan kepada Tuhan serta sesama.</p>
+            </section>
+            <section>
+                <h4>Tautan Cepat</h4>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#structure">Struktur</a></li>
+                    <li><a href="#events">Kegiatan</a></li>
+                    <li><a href="#gallery">Galeri</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </section>
+            <section>
+                <h4>Hubungi Kami</h4>
+                <a href="https://instagram.com/nhkbp.mustikajaya" target="_blank" rel="noopener noreferrer">Instagram</a><br>
+                <a href="https://wa.me/6282299421394" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            </section>
+            <section>
+                <h4>Lokasi</h4>
+                <address>
+                    <a href="https://maps.app.goo.gl/nNEyrYzPkCAWxsFq8" target="_blank" rel="noopener noreferrer">
+                        HKBP Mustikajaya, RT.010/RW.011, Aren Jaya, Kec. Mustika Jaya, Kota Bekasi, Jawa Barat, 17156, Indonesia
+                    </a>
+                </address>
+            </section>
         </div>
-    </section>
-
-    <!-- Structure Section -->
-    <section id="structure" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="section-title text-3xl font-bold text-gray-800 mb-4">Struktur Kami</h2>
-                <p class="max-w-2xl mx-auto text-gray-600">Yuk kenalan dengan para pengurus Naposobulung HKBP Mustikajaya</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- BPH (Core Committee) -->
-                <div class="structure-item bg-white rounded-xl shadow-md overflow-hidden fade-in">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-blue-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-users text-blue-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">BPH</h3>
-                        </div>
-                        <p class="text-gray-600 mb-6">Komite inti yang mengawasi semua kegiatan dan operasional naposobulung.</p>
-                        
-                        <div class="space-y-4">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-crown text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Ketua</h4>
-                                    <p class="text-sm text-gray-600">Fedrik Simanjuntak</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-user-tie text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Wakil Ketua</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-pen-fancy text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Sekretaris</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-blue-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-calculator text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Bendahara</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Seksi Rohani (Spiritual Division) -->
-                <div class="structure-item bg-white rounded-xl shadow-md overflow-hidden fade-in" style="animation-delay: 0.1s;">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-green-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-pray text-green-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Seksi Rohani</h3>
-                        </div>
-                        <p class="text-gray-600 mb-6">Memimpin kegiatan rohani, studi Alkitab, dan sesi ibadah untuk komunitas.</p>
-                        
-                        <div class="space-y-4">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-crown text-green-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Koordinator</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-green-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Anggota</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-green-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Anggota</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-green-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Anggota</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-green-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Anggota</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-green-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-green-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Anggota</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Humdok (Documentation & Publication) -->
-                <div class="structure-item bg-white rounded-xl shadow-md overflow-hidden fade-in" style="animation-delay: 0.2s;">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-purple-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-camera text-purple-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Humdok</h3>
-                        </div>
-                        <p class="text-gray-600 mb-6">Divisi yang bertugas untuk dokumentasi kegiatan dan manajemen media sosial.</p>
-                        
-                        <div class="space-y-4">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-crown text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Koordinator</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Anggota</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Anggota</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Anggota</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Anggota</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-purple-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Anggota</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Seksi Olahraga (Sports Division) -->
-                <div class="structure-item bg-white rounded-xl shadow-md overflow-hidden fade-in" style="animation-delay: 0.3s;">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="bg-red-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-running text-red-600 text-xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Seksi Olahraga</h3>
-                        </div>
-                        <p class="text-gray-600 mb-6">Memimpin kegiatan olahraga dan meningkatkan kesehatan fisik di antara anggota.</p>
-                        
-                        <div class="space-y-4">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-red-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-crown text-red-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Koordinator</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-red-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-red-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Anggota</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-red-200 flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-red-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">Anggota</h4>
-                                    <p class="text-sm text-gray-600">*****</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Events Section -->
-    <section id="events" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="section-title text-3xl font-bold text-gray-800 mb-4">Kegiatan Kami</h2>
-                <p class="max-w-2xl mx-auto text-gray-600">Yuk pantau ada kegiatan apa saja di Naposobulung HKBP Mustikajaya</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">  
-                <!-- Event 1 -->
-                <div class="event-card event-card-fixed bg-white rounded-xl shadow-md p-4 fade-in" style="animation-delay: 0.1s;">
-                    <div class="skeleton"></div>
-                    <img src="img/pendalaman.webp" alt="Pendalaman Alkitab – Naposo HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg mb-4 skeleton-fade" loading="lazy" data-skeleton>
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Pendalaman Alkitab</span>
-                        <span class="text-sm text-gray-500">Minggu pertama</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Pendalaman Alkitab</h3>
-                    <p class="text-gray-600 mb-4">Kegiatan untuk memperdalam pemahaman Alkitab dan membangun karakter melalui studi bersama.</p>
-                    <button class="open-modal-btn px-4 py-2 bg-green-600 text-white rounded-lg w-full mt-auto"
-                        data-title="Pendalaman Alkitab"
-                        data-category="Pendalaman Alkitab"
-                        data-date="1 November 2025"
-                        data-location="HKBP Mustikajaya"
-                        data-details="Pendalaman Alkitab adalah kegiatan untuk menggali firman Tuhan secara lebih mendalam dan terarah. Melalui diskusi dan studi bersama, naposo diajak memahami makna Alkitab, menerapkannya dalam kehidupan sehari-hari, serta bertumbuh dalam iman dan pengenalan akan Tuhan."
-                        data-extra='<ul class="space-y-2 text-sm"><li class="flex items-start"><i class="fas fa-clock mt-1 mr-2"></i><span>Sabtu, 19.00 - 21.00 WIB</span></li><li class="flex items-start"><i class="fas fa-book mt-1 mr-2"></i><span>Tema: Tampil Beda</span></li><li class="flex items-start"><i class="fas fa-user mt-1 mr-2"></i><span>Pemateri: Pdt. Dotur Purba</span></li></ul>'
-                        data-action="Bergabung"
-                    >Lihat Detail</button>
-                </div>
-                <!-- Event 2 -->
-                <div class="event-card event-card-fixed bg-white rounded-xl shadow-md p-4 fade-in" style="animation-delay: 0.3s;">
-                    <div class="skeleton"></div>
-                    <img src="img/koor.webp" alt="Latihan Koor – Naposo HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg mb-4 skeleton-fade" loading="lazy" data-skeleton>
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Ibadah</span>
-                        <span class="text-sm text-gray-500">Minggu ke 2,3,4</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Latihan Koor</h3>
-                    <p class="text-gray-600 mb-4">Kegiatan latihan koor yang bertujuan untuk meningkatkan kemampuan naposo dalam membawakan lagu pujian.</p>
-                    <button class="open-modal-btn px-4 py-2 bg-purple-600 text-white rounded-lg w-full mt-auto"
-                        data-title="Latihan Koor"
-                        data-category="Ibadah"
-                        data-date="Setiap sabtu"
-                        data-location="HKBP Mustikajaya"
-                        data-details="Kegiatan latihan koor yang bertujuan untuk meningkatkan kemampuan naposo dalam bernyanyi dan mempersembahkan lagu pujian dalam ibadah."
-                        data-extra='<ul class="space-y-2 text-sm"><li class="flex items-start"><i class="fas fa-clock mt-1 mr-2"></i><span>19.00 - 21.00 WIB</span></li><li class="flex items-start"><i class="fas fa-music mt-1 mr-2"></i><span>Lagu Pujian: belum ditentukan</span></li></ul>'
-                        data-action="Bergabung"
-                    >Lihat Detail</button>
-                </div>
-                <!-- Event 3 -->
-                <div class="event-card event-card-fixed bg-white rounded-xl shadow-md p-4 fade-in" style="animation-delay: 0.4s;">
-                    <div class="skeleton"></div>
-                    <img src="img/ibsus.webp" alt="Ibadah Khusus (Ibsus) – HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg mb-4 skeleton-fade" loading="lazy" data-skeleton>
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="bg-pink-100 text-pink-800 text-xs font-medium px-2.5 py-0.5 rounded">Ibsus</span>
-                        <span class="text-sm text-gray-500">Sebulan sekali</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Ibadah Khusus</h3>
-                    <p class="text-gray-600 mb-4">Kegiatan ibadah khusus yang bertujuan untuk memperkuat iman dan membangun karakter naposo.</p>
-                    <button class="open-modal-btn px-4 py-2 bg-pink-600 text-white rounded-lg w-full mt-auto"
-                        data-title="Ibadah Khusus"
-                        data-category="Ibsus"
-                        data-date="Sebulan sekali"
-                        data-location="HKBP Mustikajaya"
-                        data-details="Berbeda dari ibadah biasa, Ibadah Khusus menghadirkan pengalaman rohani yang lebih ekspresif dan terbuka melalui doa profetik, pujian modern, dan penyembahan penuh semangat untuk membangun keintiman dengan Tuhan dan mempererat kebersamaan jemaat."
-                        data-extra="<ul class='space-y-2 text-sm'><li class='flex items-start'><i class='fas fa-book mt-1 mr-2'></i><span>Topik Ibadah: belum ditentukan</span></li><li class='flex items-start'><i class='fas fa-clock mt-1 mr-2'></i><span>17.00 - 19.30 WIB</span></li><li class='flex items-start'><i class='fas fa-hands-helping mt-1 mr-2'></i><span>Terbuka bagi seluruh jemaat</span></li></ul>"
-                        data-action="Daftar"
-                    >Lihat Detail</button>
-                </div>
-                <!-- Event 4 -->
-                <div class="event-card event-card-fixed bg-white rounded-xl shadow-md p-4 fade-in" style="animation-delay: 0.2s;">
-                    <div class="skeleton"></div>
-                    <img src="img/sport.webp" alt="Kegiatan Olahraga – Naposo HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg mb-4 skeleton-fade" loading="lazy" data-skeleton>
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Olahraga</span>
-                        <span class="text-sm text-gray-500">Badminton</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Fun Sports</h3>
-                    <p class="text-gray-600 mb-4">Udah pada siap buat seru-seruan bareng? Saatnya kita bakar kalori sambil jaga kekompakan di FUN SPORT NAPOSOBULUNG!</p>
-                    <button class="open-modal-btn px-4 py-2 bg-red-600 text-white rounded-lg w-full mt-auto"
-                        data-title="Fun Sport Remaja Naposo"
-                        data-category="Olahraga"
-                        data-date="Jumat, 21 November 2025"
-                        data-location="Ton's Sport GOR"
-                        data-details="Dari pada rebahan, mending kita olahraga bareng! Yuk, datang, ramein, dan nikmati keseruannya! Jangan lupa ajak teman-teman biar makin pecah! 🔥🔥"
-                        data-extra='<ul class="space-y-2 text-sm"><li class="flex items-start"><i class="fas fa-clock mt-1 mr-2"></i><span>20.00 WIB</span></li><li class="flex items-start"><i class="fas fa-money-bill-wave mt-1 mr-2"></i><span>HTM: Gratis</span></li><li class="flex items-start"><i class="fas fa-users mt-1 mr-2"></i><span>Terbuka bagi semuanya yang suka olahraga</span></li></ul>'
-                        data-action="Bergabung"
-                    >Lihat Detail</button>
-                </div>
-                <!-- Event 5 -->
-                <div class="event-card event-card-fixed bg-white rounded-xl shadow-md p-4 fade-.in" style="animation-delay: 0.5s;">
-                    <div class="skeleton"></div>
-                    <img src="img/natal2025.webp" alt="Perayaan Natal Remaja & Naposo 2025 – HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg mb-4 skeleton-fade" loading="lazy" data-skeleton>
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Perayaan</span>
-                        <span class="text-sm text-gray-500">Desember 2025</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Natal ReNa 2025</h3>
-                    <p class="text-gray-600 mb-4">Kegiatan perayaan Natal yang menghadirkan pertunjukan drama, pertukaran hadiah, dan lainnya.</p>
-                    <button class="open-modal-btn px-4 py-2 bg-yellow-600 text-white rounded-lg w-full mt-auto"
-                        data-title="Perayaan Natal"
-                        data-category="Perayaan"
-                        data-date="13 Desember 2025"
-                        data-location="Gedung Serbaguna Mustika Bersinar"
-                        data-details="Kegiatan perayaan Natal yang dipersembahkan oleh Remaja dan Naposo yang menghadirkan pertunjukan menarik, pertukaran hadiah, dan rangkaian acara yang menarik lainnya."
-                        data-extra='<ul class="space-y-2 text-sm"><li class="flex items-start"><i class="fas fa-clock mt-1 mr-2"></i><span>15.00 WIB - Selesai</span></li><li class="flex items-start"><i class="fas fa-gifts mt-1 mr-2"></i><span>Tukar Kado</span></li><li class="flex items-start"><i class="fas fa-utensils mt-1 mr-2"></i><span>Tersedia Konsumsi</span></li><li class="flex items-start"><i class="fas fa-theater-masks mt-1 mr-2"></i><span>Pertunjukkan Drama</span></li></ul>'
-                        data-action="Konfirmasi Kehadiran"
-                    >Lihat Detail</button>
-                </div>
-            </div>
-            <!-- Modal for Event Details -->
-            <div id="event-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden transition-opacity duration-300 modal-blur-bg" role="dialog" aria-modal="true" aria-labelledby="modal-content">
-                <div class="bg-white rounded-lg p-8 max-w-lg w-full relative animate-modal-in">
-                    <button id="close-modal-btn" class="absolute top-2 right-2 text-2xl text-gray-600 hover:text-gray-900" aria-label="Close event details dialog">&times;</button>
-                    <div id="modal-content">
-                        <!-- Content will be injected by JS -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="section-title text-3xl font-bold text-gray-800 mb-4">Galeri Kami</h2>
-                <p class="max-w-2xl mx-auto text-gray-600">Momen-momen yang telah kami abadikan dari setiap kegiatan kami</p>
-            </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <!-- Gallery Item 1 -->
-                <div class="gallery-item fade-in cursor-pointer" data-index="0" data-description="Momen perayaan 17 agustus 2024 dengan kegiatan lomba yang seru dan acara bakar-bakar" style="height: 15rem;">
-                    <div class="skeleton"></div>
-                    <img src="img/agustusan.webp" alt="Perayaan 17 Agustus HKBP Mustikajaya – Lomba & Kebersamaan" class="w-full h-48 object-cover rounded-lg mb-4 hover:opacity-90 transition skeleton-fade" loading="lazy" data-skeleton>
-                    <p class="mt-2 text-sm font-medium text-gray-800">Perayaan 17 Agustus 2024</p>
-                </div>
-                
-                <!-- Gallery Item 2 -->
-                <div class="gallery-item fade-in cursor-pointer" data-index="1" style="animation-delay: 0.1s; height: 15rem;" data-description="Dokumentasi Ibadah Minggu">
-                    <div class="skeleton"></div>
-                    <img src="img/galeri_1.webp" alt="Dokumentasi Ibadah Minggu – HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg mb-4 hover:opacity-90 transition skeleton-fade" loading="lazy" data-skeleton>
-                    <p class="mt-2 text-sm font-medium text-gray-800">Ibadah Minggu</p>
-                </div>
-                
-                <!-- Gallery Item 3 -->
-                <div class="gallery-item fade-in cursor-pointer" data-index="2" style="animation-delay: 0.2s; height: 15rem;" data-description="Dokumentasi Ibadah Minggu">
-                    <div class="skeleton"></div>
-                    <img src="img/galeri_2.webp" alt="Dokumentasi Ibadah Minggu – HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg mb-4 hover:opacity-90 transition skeleton-fade" loading="lazy" data-skeleton>
-                    <p class="mt-2 text-sm font-medium text-gray-800">Ibadah Minggu</p>
-                </div>
-                
-                <!-- Gallery Item 4 -->
-                <div class="gallery-item fade-in cursor-pointer" data-index="3" style="animation-delay: 0.3s; height: 15rem;" data-description="Dokumentasi Ibadah Minggu">
-                    <div class="skeleton"></div>
-                    <img src="img/galeri_3.webp" alt="Dokumentasi Ibadah Minggu – HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg mb-4 hover:opacity-90 transition skeleton-fade" loading="lazy" data-skeleton>
-                    <p class="mt-2 text-sm font-medium text-gray-800">Ibadah Minggu</p>
-                </div>
-                
-                <!-- Gallery Item 5 -->
-                <div class="gallery-item fade-in cursor-pointer" data-index="4" style="animation-delay: 0.4s; height: 15rem;" data-description="Dokumentasi Kunjungan Gerejawi ke HKBP PTI bersama Naposo HKBP PTI">
-                    <div class="skeleton"></div>
-                    <img src="img/kunjungan_gereja.webp" alt="Kunjungan Gerejawi HKBP PTI – Kebersamaan Naposo HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg mb-4 hover:opacity-90 transition skeleton-fade" loading="lazy" data-skeleton>
-                    <p class="mt-2 text-sm font-medium text-gray-800">Kunjungan Gerejawi</p>
-                </div>
-                
-                <!-- Gallery Item 6 -->
-                <div class="gallery-item fade-in cursor-pointer" data-index="5" style="animation-delay: 0.5s; height: 15rem;" data-description="Dokumentasi Ibadah Minggu">
-                    <div class="skeleton"></div>
-                    <img src="img/galeri_4.webp" alt="Dokumentasi Ibadah Minggu – HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg mb-4 hover:opacity-90 transition skeleton-fade" loading="lazy" data-skeleton>
-                    <p class="mt-2 text-sm font-medium text-gray-800">Ibadah Minggu</p>
-                </div>
-                
-                <!-- Gallery Item 7 -->
-                <div class="gallery-item fade-in cursor-pointer" data-index="6" style="animation-delay: 0.6s; height: 15rem;" data-description="Dokumentasi perayaan Pesta Gotilon Tahun 2024">
-                    <div class="skeleton"></div>
-                    <img src="img/galeri_5.webp" alt="Pesta Gotilon 2024 – HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg mb-4 hover:opacity-90 transition skeleton-fade" loading="lazy" data-skeleton>
-                    <p class="mt-2 text-sm font-medium text-gray-800">Pesta Gotilon 2024</p>
-                </div>
-                
-                <!-- Gallery Item 8 -->
-                <div class="gallery-item fade-in cursor-pointer" data-index="7" style="animation-delay: 0.7s; height: 15rem;" data-description="Dokumentasi Perayaan Natal Remaja dan Naposo Tahun 2024">
-                    <div class="skeleton"></div>
-                    <img src="img/galeri_6.webp" alt="Perayaan Natal ReNa 2024 – HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition skeleton-fade" loading="lazy" data-skeleton>
-                    <p class="mt-2 text-sm font-medium text-gray-800">Natal ReNa 2024</p>
-                </div>
-
-                <!-- Gallery Item 9 -->
-                <div class="gallery-item fade-in cursor-pointer" data-index="8" style="animation-delay: 0.8s; height: 15rem;" data-description="Pada tanggal 27-29 Juni 2025, telah dilaksanakan Retreat Naposobulung HKBP Mustikajaya">
-                    <div class="skeleton"></div>
-                    <img src="img/retreat_naposo_25_day.webp" alt="Retreat Naposo 2025 – Siang Hari – HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition skeleton-fade" loading="lazy" data-skeleton>
-                    <p class="mt-2 text-sm font-medium text-gray-800">Retreat Naposo 2025</p>
-                </div>
-
-                <!-- Gallery Item 10 -->
-                <div class="gallery-item fade-in cursor-pointer" data-index="9" style="animation-delay: 0.8s; height: 15rem;" data-description="Pada tanggal 27-29 Juni 2025, telah dilaksanakan Retreat Naposobulung HKBP Mustikajaya">
-                    <div class="skeleton"></div>
-                    <img src="img/retreat_naposo_25_night.webp" alt="Retreat Naposo 2025 – Malam Hari – HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg hover:opacity-90 transition skeleton-fade" loading="lazy" data-skeleton>
-                    <p class="mt-2 text-sm font-medium text-gray-800">Retreat Naposo 2025</p>
-                </div>
-
-                <!-- Gallery Item 11 -->
-                <div class="gallery-item fade-in cursor-pointer" data-index="10" style="animation-delay: 0.9s; height: 15rem;" data-description="Dokumentasi Perayaan Natal Remaja dan Naposo Tahun 2025">
-                    <div class="skeleton"></div>
-                    <img src="img/galeri_7.webp" alt="Dokumentasi Perayaan Natal ReNa 2025 – HKBP Mustikajaya" class="w-full h-48 object-cover rounded-lg mb-4 hover:opacity-90 transition skeleton-fade" loading="lazy" data-skeleton>
-                    <p class="mt-2 text-sm font-medium text-gray-800">Natal ReNa 2025</p>
-                </div>
-            </div>
-            <div class="flex justify-center mt-8">
-                <button id="load-more-gallery" class="px-6 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">Muat Lebih Banyak</button>
-            </div>
-        </div>
-        
-        <!-- Lightbox -->
-        <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Galeri gambar">
-            <span class="close">&times;</span>
-            <span class="lightbox-nav prev">&lt;</span>
-            <span class="lightbox-nav next">&gt;</span>
-            <div class="lightbox-inner">
-                <img class="lightbox-content" id="lightbox-img" alt="Gambar galeri diperbesar">
-                <div id="lightbox-caption" class="lightbox-caption"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-blue-600 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="section-title text-3xl font-bold mb-4">Hubungi Kami</h2>
-                <p class="max-w-2xl mx-auto">Kalau ada saran atau pertanyaan, kamu bisa hubungi kami lewat media sosial dibawah ini</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl text-center fade-in">
-                    <div class="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fab fa-instagram text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Instagram</h3>
-                    <p class="mb-4">Follow biar ga ketinggalan update</p>
-                    <a href="https://instagram.com/nhkbp.mustikajaya" target="_blank" class="inline-block px-6 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition" aria-label="Visit our Instagram">@nhkbp.mustikajaya</a>
-                </div>
-                
-                <div class="glass-card p-8 rounded-2xl text-center fade-in" style="animation-delay: 0.2s;">
-                    <div class="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fab fa-whatsapp text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">WhatsApp</h3>
-                    <p class="mb-4">Contact Person untuk pelayanan</p>
-                    <a href="https://wa.me/6282299421394" target="_blank" class="inline-block px-6 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition" aria-label="Contact us on WhatsApp">Bulan Hutasoit</a>
-                </div>
-                
-                <div class="glass-card p-8 rounded-2xl text-center fade-in overflow-hidden" style="animation-delay: 0.4s;">
-                    <div class="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-envelope text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Email</h3>
-                    <p class="mb-4">Kirimkan email jika ada pertanyaan</p>
-                    <a href="mailto:mustikajayanhkbp@gmail.com" class="block w-full px-4 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition">mustikajayanhkbp@gmail.com</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Naposobulung HKBP Mustikajaya</h3>
-                    <p class="text-gray-400">Komunitas Remaja dan Naposo yang berkomitmen untuk pertumbuhan rohani, persahabatan, dan layanan kepada Tuhan dan sesama manusia.</p>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Tautan Cepat</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Beranda</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition">Tentang</a></li>
-                        <li><a href="#structure" class="text-gray-400 hover:text-white transition">Struktur</a></li>
-                        <li><a href="#events" class="text-gray-400 hover:text-white transition">Kegiatan</a></li>
-                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition">Galeri</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Kontak</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Hubungi Kami</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://instagram.com/nhkbp.mustikajaya" class="text-gray-400 hover:text-white transition" aria-label="Visit our Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/6282299421394" class="text-gray-400 hover:text-white transition" aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Lokasi</h4>
-                    <address class="text-gray-400 not-italic">
-                        <a href="https://maps.app.goo.gl/nNEyrYzPkCAWxsFq8" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
-                            HKBP Mustikajaya<br>
-                            RT.010/RW.011, Aren Jaya, Kec. Mustika Jaya<br>
-                            Kota Bekasi, Jawa Barat, 17156<br>
-                            Indonesia
-                        </a>
-                    </address>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2026 Naposobulung HKBP Mustikajaya. All rights reserved.</p>
-            </div>
+        <div class="app-shell footer-bottom">
+            <p>&copy; 2026 Naposobulung HKBP Mustikajaya. All rights reserved.</p>
         </div>
     </footer>
 
-    <button id="back-to-top" class="fixed bottom-8 right-8 z-50 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-opacity opacity-0 pointer-events-none" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
+    <button id="back-to-top" class="icon-button back-to-top" aria-label="Back to top">
+        <span class="material-symbols-outlined">arrow_upward</span>
     </button>
 
-    <!-- Prayer Schedule Modal -->
-    <div id="prayer-schedule-modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden transition-opacity duration-300 modal-blur-bg" role="dialog" aria-modal="true" aria-labelledby="prayer-schedule-title">
-        <div class="bg-white rounded-lg p-8 max-w-md w-full relative animate-modal-in">
-            <button id="close-prayer-schedule-modal" class="absolute top-2 right-2 text-2xl text-gray-600 hover:text-gray-900" aria-label="Close prayer schedule dialog">&times;</button>
-            <div>
-                <h3 id="prayer-schedule-title" class="text-2xl font-bold mb-4 text-center text-blue-700">Jadwal Ibadah Minggu</h3>
-                <ul class="space-y-3 text-gray-700 text-lg">
-                    <li><i class="fas fa-pray mr-2 text-amber-500"></i>Ibadah Pagi <b>06.00</b> - <b>07.30</b></li>
-                    <li><i class="fas fa-pray mr-2 text-blue-400"></i>Ibadah Siang <b>10.30</b> - <b>12.00</b></li>
-                    <li><i class="fas fa-pray mr-2 text-indigo-500"></i>Ibadah Sore <b>17.00</b> - <b>18.30</b></li>
-                    <li><i class="fas fa-pray mr-2 text-pink-400"></i>Sekolah Minggu <b>08.00</b> - <b>09.30</b></li>
-                </ul>
-            </div>
+    <div id="event-modal" class="dialog-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modal-content">
+        <div class="dialog-surface">
+            <button id="close-modal-btn" class="icon-button dialog-close" aria-label="Close event details dialog">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <div id="prayer-schedule-modal" class="dialog-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="prayer-schedule-title">
+        <div class="dialog-surface">
+            <button id="close-prayer-schedule-modal" class="icon-button dialog-close" aria-label="Close prayer schedule dialog">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <h3 id="prayer-schedule-title">Jadwal Ibadah Minggu</h3>
+            <ul class="prayer-list">
+                <li><span class="material-symbols-outlined">church</span><span>Ibadah Pagi <b>06.00</b> - <b>07.30</b></span></li>
+                <li><span class="material-symbols-outlined">church</span><span>Ibadah Siang <b>10.30</b> - <b>12.00</b></span></li>
+                <li><span class="material-symbols-outlined">church</span><span>Ibadah Sore <b>17.00</b> - <b>18.30</b></span></li>
+                <li><span class="material-symbols-outlined">school</span><span>Sekolah Minggu <b>08.00</b> - <b>09.30</b></span></li>
+            </ul>
         </div>
     </div>
 
     <script src="./script.js"></script>
-    
     <script>
-        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-            const script = document.createElement('script');
-            script.src = 'https://cdn.vercel-insights.com/v1/script.js';
+        if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+            const script = document.createElement("script");
+            script.src = "https://cdn.vercel-insights.com/v1/script.js";
             script.defer = true;
             document.head.appendChild(script);
         }

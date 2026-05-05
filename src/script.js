@@ -1,409 +1,430 @@
-document.getElementById('mobile-menu-button').addEventListener('click', function() {
-    const menu = document.getElementById('mobile-menu');
-    const btn = this;
-    menu.classList.toggle('menu-open');
-    btn.classList.toggle('open');
-});
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const menu = document.getElementById('mobile-menu');
-        const btn = document.getElementById('mobile-menu-button');
-        menu.classList.remove('menu-open');
-        btn.classList.remove('open');
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 70,
-                behavior: 'smooth'
+(function () {
+    const doc = document;
+    const root = doc.documentElement;
+
+    function byId(id) {
+        return doc.getElementById(id);
+    }
+
+    function qsa(selector, scope) {
+        return Array.from((scope || doc).querySelectorAll(selector));
+    }
+
+    function closeMenu() {
+        const menu = byId("mobile-menu");
+        const button = byId("mobile-menu-button");
+        const icon = button ? button.querySelector(".menu-icon") : null;
+        if (!menu || !button) return;
+        menu.classList.remove("menu-open");
+        button.setAttribute("aria-expanded", "false");
+        if (icon) icon.textContent = "menu";
+    }
+
+    function initMobileMenu() {
+        const menu = byId("mobile-menu");
+        const button = byId("mobile-menu-button");
+        const icon = button ? button.querySelector(".menu-icon") : null;
+        if (!menu || !button) return;
+
+        button.addEventListener("click", function () {
+            const isOpen = menu.classList.toggle("menu-open");
+            button.setAttribute("aria-expanded", String(isOpen));
+            if (icon) icon.textContent = isOpen ? "close" : "menu";
+        });
+    }
+
+    function initSmoothScrollAndActiveLinks() {
+        const navLinks = qsa('.nav-link[href^="#"]');
+        const sections = qsa("main section[id]");
+
+        navLinks.forEach(function (anchor) {
+            anchor.addEventListener("click", function (event) {
+                const targetId = anchor.getAttribute("href");
+                const target = targetId ? doc.querySelector(targetId) : null;
+                if (!target) return;
+                event.preventDefault();
+                closeMenu();
+                const topOffset = target.getBoundingClientRect().top + window.scrollY - 80;
+                window.scrollTo({ top: topOffset, behavior: "smooth" });
             });
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
+        });
+
+        function setActive(sectionId) {
+            navLinks.forEach(function (link) {
+                const isActive = link.getAttribute("href") === "#" + sectionId;
+                link.classList.toggle("active", isActive);
             });
-            this.classList.add('active');
         }
-    });
-});
-window.addEventListener('scroll', function() {
-    const scrollPosition = window.scrollY;
-    document.querySelectorAll('section').forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
+
+        function onScroll() {
+            const scrollPos = window.scrollY + 130;
+            let currentId = sections.length ? sections[0].id : "";
+            sections.forEach(function (section) {
+                if (scrollPos >= section.offsetTop) {
+                    currentId = section.id;
                 }
             });
+            if (currentId) setActive(currentId);
         }
-    });
-});
-const galleryItems = document.querySelectorAll('.gallery-item');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const lightboxCaption = document.getElementById('lightbox-caption');
-const closeBtn = document.querySelector('.close');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-let currentImageIndex = 0;
-const images = Array.from(galleryItems).map(item => ({
-    src: item.querySelector('img').src,
-    caption: item.querySelector('p').textContent,
-    description: item.getAttribute('data-description') || ''
-}));
-galleryItems.forEach((item, index) => {
-    item.addEventListener('click', () => {
-        currentImageIndex = index;
-        updateLightbox();
-        lightbox.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    });
-});
-closeBtn.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-    document.body.style.overflow = 'auto';
-});
-prevBtn.addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-    updateLightbox();
-});
-nextBtn.addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex + 1) % images.length;
-    updateLightbox();
-});
-function updateLightbox() {
-    lightboxImg.src = images[currentImageIndex].src;
-    lightboxCaption.innerHTML = `<div>${images[currentImageIndex].caption}</div>`;
-    if (images[currentImageIndex].description) {
-        lightboxCaption.innerHTML += `<div class='mt-2 text-sm text-gray-200'>${images[currentImageIndex].description}</div>`;
-    }
-}
-document.addEventListener('DOMContentLoaded', function() {
-    ['about', 'gallery', 'events'].forEach(sectionId => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-            const images = section.querySelectorAll('img[data-skeleton]');
-            images.forEach(img => {
-                const skeleton = img.previousElementSibling;
 
-                function hideSkeleton() {
-                    if (skeleton && skeleton.classList.contains('skeleton')) {
-                        skeleton.style.display = 'none';
-                    }
-                    img.classList.remove('skeleton-fade');
-                    img.classList.add('skeleton-loaded');
+        window.addEventListener("scroll", onScroll);
+        onScroll();
+    }
+
+    function initFadeInAnimations() {
+        const fadeItems = qsa(".fade-in");
+        if (!fadeItems.length) return;
+
+        const observer = new IntersectionObserver(
+            function (entries, ob) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    entry.target.style.transition = "opacity 560ms cubic-bezier(0.2,0,0,1), transform 560ms cubic-bezier(0.2,0,0,1)";
+                    ob.unobserve(entry.target);
+                });
+            },
+            { threshold: 0.15 }
+        );
+
+        fadeItems.forEach(function (item) {
+            observer.observe(item);
+        });
+    }
+
+    function initSkeletonLoaders() {
+        const images = qsa("img[data-skeleton]");
+        images.forEach(function (img) {
+            const skeleton = img.previousElementSibling;
+
+            function hideSkeleton() {
+                img.classList.add("skeleton-loaded");
+                if (skeleton && skeleton.classList.contains("skeleton")) {
+                    skeleton.style.display = "none";
                 }
+            }
 
-                if (img.complete && img.naturalWidth !== 0) {
-                    hideSkeleton();
-                } else {
-                    img.addEventListener('load', hideSkeleton);
-                    img.addEventListener('error', hideSkeleton);
-                }
-            });
-        }
-    });
-});
-
-(function() {
-    try {
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('skeleton') === '1') {
-            document.body.classList.add('force-skeleton');
-            setTimeout(() => {
-                document.body.classList.remove('force-skeleton');
-            }, 5000);
-        }
-        window.__toggleSkeleton = function(state = null) {
-            if (state === null) document.body.classList.toggle('force-skeleton');
-            else if (state) document.body.classList.add('force-skeleton');
-            else document.body.classList.remove('force-skeleton');
-        };
-    } catch (e) {
-    }
-})();
-
-lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-        lightbox.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-});
-document.addEventListener('keydown', (e) => {
-    if (lightbox.style.display === 'flex') {
-        if (e.key === 'Escape') {
-            lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        } else if (e.key === 'ArrowLeft') {
-            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-            updateLightbox();
-        } else if (e.key === 'ArrowRight') {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            updateLightbox();
-        }
-    }
-});
-function initFadeInAnimations() {
-    const fadeElements = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target); // Unobserve after first animation
+            if (img.complete && img.naturalWidth > 0) {
+                hideSkeleton();
+            } else {
+                img.addEventListener("load", hideSkeleton, { once: true });
+                img.addEventListener("error", hideSkeleton, { once: true });
             }
         });
-    }, {
-        threshold: 0.1
-    });
-    fadeElements.forEach(el => {
-        el.style.opacity = 0;
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        // Apply delay based on data-delay attribute or index
-        const delay = el.getAttribute('style') && el.getAttribute('style').match(/animation-delay: (\d+\.?\d*)s/) ? 
-            parseFloat(el.getAttribute('style').match(/animation-delay: (\d+\.?\d*)s/)[1]) * 1000 : 0;
-        setTimeout(() => {
-            observer.observe(el);
-        }, delay);
-    });
-}
-const modal = document.getElementById('event-modal');
-const modalContent = document.getElementById('modal-content');
-const closeModalBtn = document.getElementById('close-modal-btn');
-const modalInner = modal ? modal.querySelector('div.bg-white') : null;
-
-function openEventModal(event) {
-    const btn = event.currentTarget;
-    const title = btn.getAttribute('data-title');
-    const category = btn.getAttribute('data-category');
-    const date = btn.getAttribute('data-date');
-    const location = btn.getAttribute('data-location');
-    const details = btn.getAttribute('data-details');
-    const extra = btn.getAttribute('data-extra');
-    const action = btn.getAttribute('data-action');
-    
-    modalContent.innerHTML = `
-        <h3 class="text-2xl font-bold mb-2">${title}</h3>
-        <div class="flex justify-between items-center mb-2">
-            <span class="text-xs font-medium px-2.5 py-0.5 rounded bg-gray-100 text-gray-800">${category}</span>
-            <span class="text-sm text-gray-500">${date}</span>
-        </div>
-        <div class="mb-2 text-gray-600"><i class="fas fa-map-marker-alt mr-2"></i>${location}</div>
-        <p class="mb-4 text-gray-700">${details}</p>
-        ${extra}
-    `;
-    if (modalInner) {
-        modalInner.classList.remove('animate-modal-in');
-        void modalInner.offsetWidth;
-        modalInner.classList.add('animate-modal-in');
     }
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-}
 
-document.querySelectorAll('.open-modal-btn').forEach(btn => {
-    btn.addEventListener('click', openEventModal);
-});
+    function initEventModal() {
+        const modal = byId("event-modal");
+        const modalContent = byId("modal-content");
+        const closeButton = byId("close-modal-btn");
+        if (!modal || !modalContent || !closeButton) return;
 
-closeModalBtn.addEventListener('click', function() {
-    modal.classList.add('hidden');
-    document.body.style.overflow = 'auto';
-    if (modalInner) modalInner.classList.remove('animate-modal-in');
-});
+        function closeModal() {
+            modal.classList.add("hidden");
+            doc.body.style.overflow = "auto";
+        }
 
-modal.addEventListener('click', function(e) {
-    if (e.target === modal) {
-        modal.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-        if (modalInner) modalInner.classList.remove('animate-modal-in');
+        function openModal(button) {
+            const title = button.getAttribute("data-title") || "";
+            const category = button.getAttribute("data-category") || "";
+            const date = button.getAttribute("data-date") || "";
+            const location = button.getAttribute("data-location") || "";
+            const details = button.getAttribute("data-details") || "";
+            const extra = button.getAttribute("data-extra") || "";
+
+            modalContent.innerHTML =
+                "<h3>" + title + "</h3>" +
+                "<div class='modal-meta-row'>" +
+                "<span class='modal-category'>" + category + "</span>" +
+                "<span class='modal-date'>" + date + "</span>" +
+                "</div>" +
+                "<div class='modal-location'><span class='material-symbols-outlined'>location_on</span><span>" + location + "</span></div>" +
+                "<p class='modal-details'>" + details + "</p>" +
+                extra;
+
+            modal.classList.remove("hidden");
+            doc.body.style.overflow = "hidden";
+        }
+
+        qsa(".open-modal-btn").forEach(function (button) {
+            button.addEventListener("click", function () {
+                openModal(button);
+            });
+        });
+
+        closeButton.addEventListener("click", closeModal);
+        modal.addEventListener("click", function (event) {
+            if (event.target === modal) closeModal();
+        });
+
+        doc.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && !modal.classList.contains("hidden")) {
+                closeModal();
+            }
+        });
     }
-});
 
-const backToTopBtn = document.getElementById('back-to-top');
-window.addEventListener('scroll', function() {
-    if (window.scrollY > 200) {
-        backToTopBtn.classList.add('visible');
-    } else {
-        backToTopBtn.classList.remove('visible');
+    function initPrayerModal() {
+        const openBtn = byId("prayer-schedule-btn");
+        const modal = byId("prayer-schedule-modal");
+        const closeBtn = byId("close-prayer-schedule-modal");
+        if (!openBtn || !modal || !closeBtn) return;
+
+        function closeModal() {
+            modal.classList.add("hidden");
+            doc.body.style.overflow = "auto";
+        }
+
+        openBtn.addEventListener("click", function () {
+            modal.classList.remove("hidden");
+            doc.body.style.overflow = "hidden";
+        });
+
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", function (event) {
+            if (event.target === modal) closeModal();
+        });
+
+        doc.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && !modal.classList.contains("hidden")) {
+                closeModal();
+            }
+        });
     }
-});
-backToTopBtn.addEventListener('click', function() {
-    if ('scrollBehavior' in document.documentElement.style) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-        const duration = 1000;
-        const start = window.scrollY;
-        const startTime = performance.now();
-        function scrollStep(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const ease = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
-            window.scrollTo(0, start * (1 - ease));
-            if (progress < 1) {
-                requestAnimationFrame(scrollStep);
+
+    function initLightbox() {
+        const items = qsa(".gallery-item");
+        const lightbox = byId("lightbox");
+        const image = byId("lightbox-img");
+        const caption = byId("lightbox-caption");
+        const closeBtn = lightbox ? lightbox.querySelector(".close") : null;
+        const prevBtn = lightbox ? lightbox.querySelector(".prev") : null;
+        const nextBtn = lightbox ? lightbox.querySelector(".next") : null;
+        if (!items.length || !lightbox || !image || !caption || !closeBtn || !prevBtn || !nextBtn) return;
+
+        const images = items.map(function (item) {
+            const img = item.querySelector("img");
+            const text = item.querySelector("p");
+            return {
+                src: img ? img.src : "",
+                caption: text ? text.textContent : "",
+                description: item.getAttribute("data-description") || ""
+            };
+        });
+
+        let currentIndex = 0;
+
+        function render() {
+            const current = images[currentIndex];
+            image.src = current.src;
+            caption.innerHTML = "<div>" + current.caption + "</div>";
+            if (current.description) {
+                caption.innerHTML += "<div style='margin-top:.35rem;opacity:.86;font-size:.88rem;'>" + current.description + "</div>";
             }
         }
-        requestAnimationFrame(scrollStep);
+
+        function open(index) {
+            currentIndex = index;
+            render();
+            lightbox.style.display = "flex";
+            doc.body.style.overflow = "hidden";
+        }
+
+        function close() {
+            lightbox.style.display = "none";
+            doc.body.style.overflow = "auto";
+        }
+
+        function prev() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            render();
+        }
+
+        function next() {
+            currentIndex = (currentIndex + 1) % images.length;
+            render();
+        }
+
+        items.forEach(function (item, index) {
+            item.addEventListener("click", function () {
+                open(index);
+            });
+        });
+
+        closeBtn.addEventListener("click", close);
+        prevBtn.addEventListener("click", prev);
+        nextBtn.addEventListener("click", next);
+
+        lightbox.addEventListener("click", function (event) {
+            if (event.target === lightbox) close();
+        });
+
+        doc.addEventListener("keydown", function (event) {
+            if (lightbox.style.display !== "flex") return;
+            if (event.key === "Escape") close();
+            if (event.key === "ArrowLeft") prev();
+            if (event.key === "ArrowRight") next();
+        });
     }
-});
-(function() {
-    const preloader = document.getElementById('preloader');
-    let loaded = false;
-    let minTimePassed = false;
-    let hardTimeoutPassed = false;
-    let preloaderHidden = false;
-    function tryHidePreloader() {
-        if (preloaderHidden) return;
-        if ((loaded && minTimePassed) || hardTimeoutPassed) {
-            if (preloader) {
-                preloaderHidden = true;
-                preloader.classList.add('hide');
-                // Initialize fade-in animations as soon as preloader starts fading out
-                initFadeInAnimations();
-                const homeTitle = document.getElementById('home-title');
-                if (homeTitle) {
-                    homeTitle.classList.add('fade-in-initial');
-                }
-                setTimeout(() => {
+
+    function initBackToTop() {
+        const button = byId("back-to-top");
+        if (!button) return;
+
+        function syncVisibility() {
+            if (window.scrollY > 220) {
+                button.classList.add("visible");
+            } else {
+                button.classList.remove("visible");
+            }
+        }
+
+        window.addEventListener("scroll", syncVisibility);
+        syncVisibility();
+
+        button.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+
+    function initTheme() {
+        const toggleDesktop = byId("theme-toggle");
+        const toggleMobile = byId("theme-toggle-mobile");
+        const iconDesktop = byId("theme-toggle-icon");
+        const iconMobile = byId("theme-toggle-icon-mobile");
+        const key = "theme-preference";
+        const media = window.matchMedia("(prefers-color-scheme: dark)");
+
+        function systemTheme() {
+            return media.matches ? "dark" : "light";
+        }
+
+        function iconName(theme) {
+            return theme === "dark" ? "light_mode" : "dark_mode";
+        }
+
+        function apply(theme) {
+            root.classList.toggle("dark", theme === "dark");
+            if (iconDesktop) iconDesktop.textContent = iconName(theme);
+            if (iconMobile) iconMobile.textContent = iconName(theme);
+            if (toggleDesktop) toggleDesktop.setAttribute("aria-pressed", String(theme === "dark"));
+            if (toggleMobile) toggleMobile.setAttribute("aria-pressed", String(theme === "dark"));
+        }
+
+        function current() {
+            return localStorage.getItem(key) || systemTheme();
+        }
+
+        function toggle() {
+            const next = root.classList.contains("dark") ? "light" : "dark";
+            localStorage.setItem(key, next);
+            apply(next);
+        }
+
+        apply(current());
+
+        if (toggleDesktop) toggleDesktop.addEventListener("click", toggle);
+        if (toggleMobile) toggleMobile.addEventListener("click", toggle);
+
+        media.addEventListener("change", function () {
+            if (!localStorage.getItem(key)) {
+                apply(systemTheme());
+            }
+        });
+
+        window.addEventListener("storage", function (event) {
+            if (event.key === key) {
+                apply(event.newValue || systemTheme());
+            }
+        });
+    }
+
+    function initLoadMoreGallery() {
+        const items = qsa(".gallery-item");
+        const button = byId("load-more-gallery");
+        if (!items.length || !button) return;
+
+        const batch = 4;
+        let shown = 0;
+
+        function render(reset) {
+            if (reset) {
+                shown = 0;
+                items.forEach(function (item) {
+                    item.style.display = "none";
+                });
+            }
+            const next = Math.min(shown + batch, items.length);
+            for (let i = shown; i < next; i += 1) {
+                items[i].style.display = "";
+            }
+            shown = next;
+            button.style.display = shown >= items.length ? "none" : "";
+        }
+
+        render(true);
+        button.addEventListener("click", function () {
+            render(false);
+        });
+    }
+
+    function initPreloader() {
+        const preloader = byId("preloader");
+        if (!preloader) return;
+
+        let loaded = false;
+        let minTime = false;
+        let timeout = false;
+        let hidden = false;
+
+        function revealContent() {
+            const title = byId("home-title");
+            if (title) title.classList.add("fade-in-initial");
+            initFadeInAnimations();
+        }
+
+        function hidePreloader() {
+            if (hidden) return;
+            if ((loaded && minTime) || timeout) {
+                hidden = true;
+                preloader.classList.add("hide");
+                revealContent();
+                setTimeout(function () {
                     preloader.remove();
-                }, 900); // match the CSS transition duration
+                }, 820);
             }
         }
-    }
-    function markLoaded() {
-        loaded = true;
-        tryHidePreloader();
-    }
-    window.addEventListener('load', markLoaded);
-    document.addEventListener('DOMContentLoaded', markLoaded);
-    setTimeout(function() {
-        minTimePassed = true;
-        tryHidePreloader();
-    }, 1500);
-    setTimeout(function() {
-        hardTimeoutPassed = true;
-        tryHidePreloader();
-    }, 5000);
-})();
-(function() {
-    const root = document.documentElement;
-    const toggleDesktop = document.getElementById('theme-toggle');
-    const toggleMobile = document.getElementById('theme-toggle-mobile');
-    const iconDesktop = document.getElementById('theme-toggle-icon');
-    const iconMobile = document.getElementById('theme-toggle-icon-mobile');
-    const STORAGE_KEY = 'theme-preference';
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-    function getSystemTheme() {
-        return prefersDarkScheme.matches ? 'dark' : 'light';
-    }
-
-    function currentPreference() {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) return stored;
-        return getSystemTheme();
-    }
-
-    function applyTheme(theme) {
-        if (theme === 'dark') {
-            root.classList.add('dark');
-            updateIcons('dark');
-        } else {
-            root.classList.remove('dark');
-            updateIcons('light');
+        function markLoaded() {
+            loaded = true;
+            hidePreloader();
         }
-        if (toggleDesktop) toggleDesktop.setAttribute('aria-pressed', theme === 'dark');
-        if (toggleMobile) toggleMobile.setAttribute('aria-pressed', theme === 'dark');
+
+        window.addEventListener("load", markLoaded);
+        doc.addEventListener("DOMContentLoaded", markLoaded);
+
+        setTimeout(function () {
+            minTime = true;
+            hidePreloader();
+        }, 1400);
+
+        setTimeout(function () {
+            timeout = true;
+            hidePreloader();
+        }, 5000);
     }
 
-    function updateIcons(theme) {
-        const toMoon = theme !== 'dark';
-        if (iconDesktop) iconDesktop.className = 'theme-toggle-icon fas ' + (toMoon ? 'fa-moon' : 'fa-sun');
-        if (iconMobile) iconMobile.className = 'theme-toggle-icon fas ' + (toMoon ? 'fa-moon' : 'fa-sun');
-    }
-
-    function toggleTheme() {
-        const newTheme = root.classList.contains('dark') ? 'light' : 'dark';
-        localStorage.setItem(STORAGE_KEY, newTheme);
-        applyTheme(newTheme);
-    }
-
-    // Initialize
-    applyTheme(currentPreference());
-    if (toggleDesktop) toggleDesktop.addEventListener('click', toggleTheme);
-    if (toggleMobile) toggleMobile.addEventListener('click', toggleTheme);
-
-    // Listen for system theme changes
-    prefersDarkScheme.addEventListener('change', (e) => {
-        // Only apply system theme if user hasn't manually set a preference
-        if (!localStorage.getItem(STORAGE_KEY)) {
-            applyTheme(e.matches ? 'dark' : 'light');
-        }
-    });
-
-    // Sync across tabs
-    window.addEventListener('storage', (e) => {
-        if (e.key === STORAGE_KEY && e.newValue) {
-            applyTheme(e.newValue);
-        }
-    });
-})();
-const prayerBtn = document.getElementById('prayer-schedule-btn');
-const prayerModal = document.getElementById('prayer-schedule-modal');
-const closePrayerModal = document.getElementById('close-prayer-schedule-modal');
-if (prayerBtn && prayerModal && closePrayerModal) {
-    prayerBtn.addEventListener('click', function() {
-        prayerModal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    });
-    closePrayerModal.addEventListener('click', function() {
-        prayerModal.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-    });
-    prayerModal.addEventListener('click', function(e) {
-        if (e.target === prayerModal) {
-            prayerModal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-    });
-}
-(function() {
-    const gallerySection = document.getElementById('gallery');
-    const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
-    const loadMoreBtn = document.getElementById('load-more-gallery');
-    if (!galleryItems.length || !loadMoreBtn) return;
-
-    function isMobile() {
-        return window.innerWidth < 768;
-    }
-    function getBatchSize() {
-        return 4;
-    }
-    let shownCount = 0;
-
-    function showGalleryBatch(reset = false) {
-        const batchSize = getBatchSize();
-        if (reset) {
-            shownCount = 0;
-            galleryItems.forEach(item => item.style.display = 'none');
-        }
-        let toShow = shownCount === 0 ? batchSize : shownCount + batchSize;
-        for (let i = 0; i < toShow && i < galleryItems.length; i++) {
-            galleryItems[i].style.display = '';
-        }
-        shownCount = Math.min(toShow, galleryItems.length);
-        if (shownCount >= galleryItems.length) {
-            loadMoreBtn.style.display = 'none';
-        } else {
-            loadMoreBtn.style.display = '';
-        }
-    }
-    showGalleryBatch(true);
-    loadMoreBtn.addEventListener('click', function() {
-        showGalleryBatch();
+    doc.addEventListener("DOMContentLoaded", function () {
+        initMobileMenu();
+        initSmoothScrollAndActiveLinks();
+        initSkeletonLoaders();
+        initEventModal();
+        initPrayerModal();
+        initLightbox();
+        initBackToTop();
+        initTheme();
+        initLoadMoreGallery();
+        initPreloader();
     });
 })();
