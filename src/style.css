@@ -143,11 +143,6 @@ ul {
     list-style: none;
 }
 
-:focus-visible {
-    outline: 3px solid color-mix(in srgb, var(--md-sys-color-primary) 80%, white 20%);
-    outline-offset: 2px;
-}
-
 .app-shell {
     width: min(1160px, calc(100% - 2.25rem));
     margin-inline: auto;
