@@ -1,20 +1,51 @@
-# Website Naposobulung HKBP Mustikajaya
+# Naposobulung HKBP Mustikajaya Website
 
-Website resmi Naposobulung HKBP Mustikajaya (NHKBP MJ), komunitas pemuda di Gereja HKBP Mustika Jaya.
+Official website for Naposobulung HKBP Mustikajaya (NHKBP MJ), the youth community of HKBP Mustika Jaya.
 
-## Ringkas
+## Overview
 
-- Tujuan: menampilkan informasi komunitas, acara, galeri, dan kontak.
-- Stack: HTML, CSS, JavaScript.
-- Live: https://nhkbpmj.vercel.app
+This site presents the community profile, organization structure, activities, photo gallery, and contact information in a clean static web experience.
 
-## Lokal
+## Features
 
-Jalankan server statis lalu buka halaman utama:
+- Responsive landing page with navigation, hero section, and call-to-action buttons
+- Community profile, vision and mission, and ministry structure
+- Activity cards with modal details
+- Gallery with lightbox navigation and progressive loading
+- Contact section for Instagram, WhatsApp, and email
+- SEO metadata and structured data for search engine visibility
+
+## Tech Stack
+
+- HTML
+- CSS
+- JavaScript
+- Vercel Analytics
+
+## Local Development
+
+Run a simple static server from the repository root and open the homepage:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Buka `http://localhost:8080/src/index.html`.
+Then open:
+
+```text
+http://localhost:8080/src/index.html
+```
+
+## Project Structure
+
+- `src/index.html` - main page markup and metadata
+- `src/style.css` - site styles and responsive layout
+- `src/script.js` - interactions such as menus, modals, and gallery behavior
+- `src/img/` - site images and media assets
+
+## Deployment
+
+The site is deployed on Vercel:
+
+https://nhkbpmj.vercel.app
 

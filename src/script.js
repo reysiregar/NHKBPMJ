@@ -44,7 +44,7 @@
                 if (!target) return;
                 event.preventDefault();
                 closeMenu();
-                const topOffset = target.getBoundingClientRect().top + window.scrollY - 80;
+                const topOffset = target.getBoundingClientRect().top + window.scrollY - 56;
                 window.scrollTo({ top: topOffset, behavior: "smooth" });
             });
         });
