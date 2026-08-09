@@ -34,18 +34,29 @@
     }
 
     function initSmoothScrollAndActiveLinks() {
+        const allHashLinks = qsa('a[href^="#"]');
         const navLinks = qsa('.nav-link[href^="#"]');
         const sections = qsa("main section[id]");
+        const appBarRow = doc.querySelector(".app-bar-row");
 
-        navLinks.forEach(function (anchor) {
+        function getHeaderHeight() {
+            return appBarRow ? appBarRow.offsetHeight : 76;
+        }
+
+        allHashLinks.forEach(function (anchor) {
             anchor.addEventListener("click", function (event) {
                 const targetId = anchor.getAttribute("href");
-                const target = targetId ? doc.querySelector(targetId) : null;
+                if (!targetId || targetId === "#") return;
+                const target = doc.querySelector(targetId);
                 if (!target) return;
                 event.preventDefault();
                 closeMenu();
-                const topOffset = target.getBoundingClientRect().top + window.scrollY - 56;
-                window.scrollTo({ top: topOffset, behavior: "smooth" });
+                if (targetId === "#home") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                } else {
+                    const topOffset = target.getBoundingClientRect().top + window.scrollY - getHeaderHeight();
+                    window.scrollTo({ top: topOffset, behavior: "smooth" });
+                }
             });
         });
 
@@ -57,7 +68,7 @@
         }
 
         function onScroll() {
-            const scrollPos = window.scrollY + 130;
+            const scrollPos = window.scrollY + getHeaderHeight() + 40;
             let currentId = sections.length ? sections[0].id : "";
             sections.forEach(function (section) {
                 if (scrollPos >= section.offsetTop) {
