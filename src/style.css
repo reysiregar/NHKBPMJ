@@ -174,7 +174,9 @@ ul {
     z-index: 1200;
     display: grid;
     place-items: center;
-    background: radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--md-sys-color-primary) 40%, transparent), transparent 62%), linear-gradient(150deg, var(--md-sys-color-surface-container-high) 0%, var(--md-sys-color-surface-container) 100%);
+    padding: 1.5rem;
+    box-sizing: border-box;
+    background: radial-gradient(circle at 50% 30%, color-mix(in srgb, var(--md-sys-color-primary) 35%, transparent), transparent 70%), linear-gradient(150deg, var(--md-sys-color-surface-container-high) 0%, var(--md-sys-color-surface-container) 100%);
     transition: opacity var(--md-sys-duration-long) var(--md-sys-motion-standard), visibility var(--md-sys-duration-long) var(--md-sys-motion-standard);
 }
 
@@ -184,16 +186,62 @@ ul {
     pointer-events: none;
 }
 
-.preloader-text {
-    font-size: clamp(1.2rem, 3.2vw, 2.2rem);
-    font-weight: 700;
-    color: var(--md-sys-color-on-surface);
+.preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.85rem;
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.preloader-logo {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
     opacity: 0;
-    animation: preloaderFade 950ms var(--md-sys-motion-standard) forwards;
+    animation: preloaderLogoFade 900ms cubic-bezier(0.2, 0, 0, 1) forwards;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.preloader-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    text-align: center;
+    margin: 0;
+    opacity: 0;
+    animation: preloaderFade 950ms cubic-bezier(0.2, 0, 0, 1) 150ms forwards;
+}
+
+.preloader-welcome {
+    font-size: clamp(0.95rem, 2.8vw, 1.25rem);
+    font-weight: 500;
+    color: var(--md-sys-color-on-surface-variant);
+    letter-spacing: 0.02em;
+}
+
+.preloader-brand {
+    font-size: clamp(1.25rem, 4.5vw, 2.2rem);
+    font-weight: 800;
+    color: var(--md-sys-color-primary);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+}
+
+@keyframes preloaderLogoFade {
+    from { opacity: 0; transform: scale(0.85) translateY(-8px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 @keyframes preloaderFade {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
@@ -1063,6 +1111,14 @@ main {
 @media (max-width: 620px) {
     .app-shell {
         width: min(1160px, calc(100% - 1.2rem));
+    }
+    .preloader-logo {
+        width: 52px;
+        height: 52px;
+    }
+    .preloader-content {
+        gap: 0.6rem;
+        padding: 0.5rem;
     }
     .hero-actions {
         display: grid;
